@@ -153,4 +153,29 @@ def jumlahKombinasi(n, r):
     return factorial(n) // (factorial(r) * factorial(n - r))
 
 
-print(f"rata {kecRataAmeng(20,5,30,3)}")
+print(
+    f"""\
+Keliling persegi panjang (p=5, l=3): 
+{hitungKelilingPersegiPanjang(5, 3)}
+
+Volume kubus (s=4): 
+{hitungVolumeKubus(4)}
+
+Rata-rata bobot (a=80, b=90, c=70, d=85, w1=0.25, w2=0.25, w3=0.25, w4=0.25) : 
+{hitungRataRata(80, 90, 70, 85, 0.25, 0.25, 0.25, 0.25)}
+
+Nilai tengah dari (x=5, y=7, z=3): 
+{nilaiTengah(5, 7, 3)}
+
+Kecepatan rata-rata (jarakTempuh1=120, waktuTempuh1=2, jarakTempuh2=180, waktuTempuh2=3): 
+{kecRataAmeng(120, 2, 180, 3)}
+
+Jumlah digit dari angka (angka1=123, angka2=4567, angka3=89): 
+{jumlahDigitGampang(123, 4567, 89)}
+
+Volume bola dengan jari-jari (jariJari1=3, jariJari2=4, jariJari3=5): 
+{volumeBola(3, 4, 5)}
+
+Jumlah kombinasi (n=5, r=3): {jumlahKombinasi(5, 3)}
+"""
+)
