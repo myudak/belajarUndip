@@ -120,7 +120,7 @@ def jumlahDigitGampang(angka1: int, angka2: int, angka3: int) -> int:
 def jumlahDigit(angka1: int, angka2: int, angka3: int) -> int:
     from math import log10
 
-    return int(log10(angka1) + log10(angka2) + log10(angka3))
+    return int(log10(angka1) + 1) + int(log10(angka2) + 1) + int(log10(angka3) + 1)
 
 
 """
@@ -155,27 +155,20 @@ def jumlahKombinasi(n, r):
 
 print(
     f"""\
-Keliling persegi panjang (p=5, l=3): 
-{hitungKelilingPersegiPanjang(5, 3)}
+Keliling persegi panjang (p=5, l=3): {hitungKelilingPersegiPanjang(5, 3)} -> 16
 
-Volume kubus (s=4): 
-{hitungVolumeKubus(4)}
+Volume kubus (s=4): {hitungVolumeKubus(4)} -> 64
 
-Rata-rata bobot (a=80, b=90, c=70, d=85, w1=0.25, w2=0.25, w3=0.25, w4=0.25) : 
-{hitungRataRata(80, 90, 70, 85, 0.25, 0.25, 0.25, 0.25)}
+Rata-rata bobot (a=80, b=90, c=70, d=85, w1=0.25, w2=0.25, w3=0.25, w4=0.25) : {hitungRataRata(80, 90, 70, 85, 0.25, 0.25, 0.25, 0.25)} -> 81.25
 
-Nilai tengah dari (x=5, y=7, z=3): 
-{nilaiTengah(5, 7, 3)}
+Nilai tengah dari (x=5, y=7, z=3): {nilaiTengah(5, 7, 3)} -> 5
 
-Kecepatan rata-rata (jarakTempuh1=120, waktuTempuh1=2, jarakTempuh2=180, waktuTempuh2=3): 
-{kecRataAmeng(120, 2, 180, 3)}
+Kecepatan rata-rata (jarakTempuh1=120, waktuTempuh1=2, jarakTempuh2=180, waktuTempuh2=3): {kecRataAmeng(120, 2, 180, 3)} -> 60
 
-Jumlah digit dari angka (angka1=123, angka2=4567, angka3=89): 
-{jumlahDigitGampang(123, 4567, 89)}
+Jumlah digit dari angka (angka1=123, angka2=4567, angka3=89): {jumlahDigit(123, 4567, 89)} ->  9
 
-Volume bola dengan jari-jari (jariJari1=3, jariJari2=4, jariJari3=5): 
-{volumeBola(3, 4, 5)}
+Volume bola dengan jari-jari (jariJari1=3, jariJari2=4, jariJari3=5): {volumeBola(3, 4, 5)}
 
-Jumlah kombinasi (n=5, r=3): {jumlahKombinasi(5, 3)}
+Jumlah kombinasi (n=5, r=3): {jumlahKombinasi(5, 3)} -> 10
 """
 )
