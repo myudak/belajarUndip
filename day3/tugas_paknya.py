@@ -89,6 +89,7 @@ APLIKASI
 d, m, y = 17, 9, 2024
 print(f"Apakah Lusa hari Kamis ({d},{m},{y}): {ApakahLusaHariKamis(d,m,y)}")
 
+
 """
 **************************************************************
 NOTASI FUNGSIONAL??
