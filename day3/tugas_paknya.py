@@ -86,8 +86,8 @@ def ApakahLusaHariKamis(d: int, m: int, y: int) -> bool:
 APLIKASI
 **************************************************************
 """
-
-print(f"Apakah Lusa hari Kamis: {ApakahLusaHariKamis(17, 9, 2024)}")
+d, m, y = 17, 9, 2024
+print(f"Apakah Lusa hari Kamis ({d},{m},{y}): {ApakahLusaHariKamis(d,m,y)}")
 
 """
 **************************************************************
