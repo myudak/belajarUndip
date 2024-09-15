@@ -99,14 +99,12 @@ print(f"Apakah Lusa hari Kamis ({d},{m},{y}): {ApakahLusaHariKamis(d,m,y)}")
 NOTASI FUNGSIONAL??
 **************************************************************
 
-totalKabisat(y):
-  (y - 1) // 4 
-  - (y - 1) // 100
-  + (y - 1) // 400
-  - (1900 // 4 - 1900 // 100 + 1900 // 400)
+TotalKabisat(y) : (y // 4) - (y // 100) + (y // 400)
 
-ApakahLusaHariKamis(d, m, y) = 
+ApakahLusaHariKamis(d, m, y) :
   let totalHari = HariKe1900(d + 2, m, y) in
-  let totalHariSejak1900 = totalHari + (y - 1900) * 365 + totalKabisat(y) in
-  totalHariSejak1900 mod 7 = 3
+  let tahunBerlalu = y - 1900 in
+  let kabisat = TotalKabisat(tahunBerlalu) in
+  let hariTambahan = (tahunBerlalu * 365) + kabisat in
+  (totalHari + hariTambahan) mod 7 = 3
 """
