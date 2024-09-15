@@ -1,5 +1,5 @@
 """
-Program   : Ekspresi kondisional: penanggalan versi 1 (tanpa memperhitungkan tahun kabisat)
+Program   : Ekspresi kondisional: penanggalan versi 2
 Deskripsi : Program ini menghitung hari ke-n dari suatu tanggal berdasarkan tahun 1900+y dengan memperhitungkan tahun kabisat.
 NIM/Nama  : 24060124110142/Muchammad Yuda Tri Ananda
 Tanggal   : 13/09/2024

@@ -64,21 +64,20 @@ def HariKe1900(hari: int, bulan: int, tahun: int) -> int:
     return dpm(bulan) + hari - 1
 
 
-def totalKabisat(y: int) -> int:
+def TotalKabisat(y: int) -> int:
     """menghitung jumlah tahun kabisat dari 1900 hingga tahun 1900+y-1"""
-    return (
-        (y - 1) // 4
-        - (y - 1) // 100
-        + (y - 1) // 400
-        - (1900 // 4 - 1900 // 100 + 1900 // 400)
-    )
+    return y // 4 - y // 100 + y // 400
 
 
 def ApakahLusaHariKamis(d: int, m: int, y: int) -> bool:
     # memeriksa apakah lusa (hari setelah besok) dari tanggal <d, m, y> adalah hari Kamis
     totalHari = HariKe1900(d + 2, m, y)
+    tahunBerlalu = y - 1900
+    kabisat = TotalKabisat(tahunBerlalu)
+    hariTambahan = tahunBerlalu * 365 + kabisat
+
     # total hari sejak 1900 modulo 7 = 3 -> hari Kamis
-    return (totalHari + (y - 1900) * 365 + totalKabisat(y)) % 7 == 3
+    return (totalHari + hariTambahan) % 7 == 3
 
 
 """
@@ -86,9 +85,14 @@ def ApakahLusaHariKamis(d: int, m: int, y: int) -> bool:
 APLIKASI
 **************************************************************
 """
+d, m, y = 12, 9, 2006
+print(f"Apakah Lusa hari Kamis ({d},{m},{y}): {ApakahLusaHariKamis(d,m,y)}")
+d, m, y = 19, 9, 2023
+print(f"Apakah Lusa hari Kamis ({d},{m},{y}): {ApakahLusaHariKamis(d,m,y)}")
 d, m, y = 17, 9, 2024
 print(f"Apakah Lusa hari Kamis ({d},{m},{y}): {ApakahLusaHariKamis(d,m,y)}")
-
+d, m, y = 18, 9, 2029
+print(f"Apakah Lusa hari Kamis ({d},{m},{y}): {ApakahLusaHariKamis(d,m,y)}")
 
 """
 **************************************************************
