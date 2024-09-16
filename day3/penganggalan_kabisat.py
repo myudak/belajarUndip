@@ -61,12 +61,16 @@ def HariKe1900(d: int, m: int, y: int) -> int:
     return dpm(m) + d - 1 + (1 if m > 2 and IsKabisat(y) else 0)
 
 
+def ApakahLusaKamis(d: int, m: int, y: int) -> bool:
+    return HariKe1900(d, m, y) % 7 + 2 == 6
+
+
 """
 **************************************************************
 APLIKASI
 **************************************************************
 """
 
-print(HariKe1900(1, 1, 82))  # -> 1
-print(HariKe1900(31, 12, 72))  # -> 366
-print(HariKe1900(3, 4, 93))  # -> 93
+print(HariKe1900(10, 3, 2000))
+print(HariKe1900(31, 12, 2016))
+print(ApakahLusaKamis(28, 3, 1945))
