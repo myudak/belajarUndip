@@ -17,6 +17,12 @@ gradien : integer, integer -> real
 {gradien(a, b) menghitung gradien magis antara titik a dan b dengan rumus (f(a) - f(b)) / (a - b), di mana a ≠ b}
 """
 
+"""
+**************************************************************
+REALISASI
+**************************************************************
+"""
+
 
 def f(x: int) -> float:
     return 3 * x**2 + 2 * x - 5

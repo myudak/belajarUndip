@@ -15,6 +15,12 @@ BelajarTenang : integer, integer -> string
 {BelajarTenang(dB, m) menghitung jarak berdasarkan desibel (dB) dengan rumus 15 * 10^((dB - 40) / 20) dan membandingkannya dengan nilai batas jarak m. Menghasilkan "Isi bensin dulu, bang" jika hasil perhitungan lebih besar dari m, atau mengembalikan nilai jarak tersebut dalam meter jika lebih kecil atau sama dengan m.}
 """
 
+"""
+**************************************************************
+REALISASI
+**************************************************************
+"""
+
 
 def BelajarTenang(dB: int, m: int) -> str:
     return (

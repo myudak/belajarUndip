@@ -10,9 +10,15 @@ Tanggal   : 23/09/2024
 DEFINISI DAN SPESIFIKASI
 **************************************************************
 
-jalanSemut : integer [1..10000], integer [1..10000], integer [1..10000] -> real
+jalanSemut : integer, integer, integer -> real 
 {jalanSemut(x, y, z) menghitung jarak terpendek yang ditempuh oleh semut dari titik (0,0,0) ke titik (x,y,z) dengan menggunakan rumus jarak terpendek yang melibatkan tiga kombinasi jarak antara x, y, dan z.}
 
+**************************************************************
+"""
+
+"""
+**************************************************************
+REALISASI
 **************************************************************
 """
 
