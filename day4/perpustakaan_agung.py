@@ -1,6 +1,9 @@
 """
-Program   : Jam Pasir Ajaib
-Deskripsi : Program ini menghitung hari ke-n dari suatu tanggal berdasarkan tahun 1900+y dengan memperhitungkan tahun kabisat.
+Program   : Perpustakaan Agung
+Deskripsi : Program ini menghitung estimasi jumlah pengunjung di Perpustakaan Agung berdasarkan prediksi dari 
+            tiga ahli (Ahli Statistika, Ahli Matematika, dan Ahli Ilmu Perpustakaan) serta data historis 
+            pengunjung pada hari tertentu. Perhitungan akan mempertimbangkan waktu siang dan malam dengan 
+            faktor pengali untuk waktu malam.
 NIM/Nama  : 24060124110142/Muchammad Yuda Tri Ananda
 Tanggal   : 23/09/2024
 """
@@ -8,14 +11,28 @@ Tanggal   : 23/09/2024
 """
 **************************************************************
 DEFINISI DAN SPESIFIKASI
-HariKe1900 : integer [1..31], integer [1..12], integer [0..99] → integer [1..366]
-{HariKe1900(d,m,y) dari suatu tanggal <d,m,y> adalah hari absolut dihitung mulai 1 Januari tahun 1900+y. 1 Januari tahun 1900+y adalah hari ke 1}
+**************************************************************
 
-dpm : integer [1..12] → integer [1..366]
-{dpm(B) adalah jumlah hari kumulatif dari tanggal 1 Januari hingga tanggal 1 bulan B pada tahun tertentu, tanpa memperhitungkan tahun kabisat.}
+TabelHari : string -> float
+{TabelHari(Hari) mengembalikan rata-rata jumlah pengunjung pada hari yang ditentukan berdasarkan data 
+historis. Parameter:
+Hari (string): Nama hari dalam seminggu ("senin", "selasa", "rabu", "kamis", "jumat", "sabtu", "minggu"). Fungsi ini akan mengembalikan rata-rata jumlah pengunjung (float) untuk hari yang diberikan.}
 
-IsKabisat? : integer [0..99] → boolean
-{IsKabisat?(y) menghasilkan True jika tahun 1900+y adalah tahun kabisat, yaitu habis dibagi 4 tetapi tidak habis dibagi 100, atau habis dibagi 400.}
+EstimateGreatLib : string, int, int, int, int, int, int, int, int → float
+{EstimateGreatLib(D, X, Y, SS, SR, AS, AM, AIP, R) menghitung estimasi perbandingan jumlah pengunjung 
+dari Perpustakaan Agung berdasarkan parameter berikut:
+    1. D (string): Hari yang akan diperkirakan ("senin", "selasa", "rabu", "kamis", "jumat", "sabtu", "minggu").
+    2. X (int): Jam mulai perkiraan (0 ≤ X ≤ 24).
+    3. Y (int): Jam akhir perkiraan (X < Y ≤ 24).
+    4. SS (int): Jam matahari terbenam (0 ≤ SS ≤ 24).
+    5. SR (int): Jam matahari terbit (0 ≤ SR ≤ 24).
+    6. AS (int): Prediksi jumlah pengunjung dari Ahli Statistika (0 ≤ AS ≤ 10000).
+    7. AM (int): Prediksi jumlah pengunjung dari Ahli Matematika (0 ≤ AM ≤ 10000).
+    8. AIP (int): Prediksi jumlah pengunjung dari Ahli Ilmu Perpustakaan (0 ≤ AIP ≤ 10000).
+    9. R (int): Persentase pengali untuk estimasi malam (1 ≤ R ≤ 100).
+Fungsi ini akan mengembalikan estimasi perbandingan pengunjung dalam format desimal dengan maksimal 5 digit 
+angka di belakang koma.}
+
 **************************************************************
 """
 

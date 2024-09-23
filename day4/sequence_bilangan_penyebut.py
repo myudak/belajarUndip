@@ -1,6 +1,9 @@
 """
 Program   : Sequence Bilangan Penyebut
-Deskripsi : Program ini menghitung hari ke-n dari suatu tanggal berdasarkan tahun 1900+y dengan memperhitungkan tahun kabisat.
+Deskripsi : Program ini menentukan apakah urutan angka yang terulang setelah koma sesuai dengan 
+            hasil pembagian 1 dengan bilangan bulat positif. Jika ya, program akan mengembalikan 
+            nilai bilangan bulat pembagi tersebut. Jika tidak, program akan mengeluarkan string 
+            "Tidak ada".
 NIM/Nama  : 24060124110142/Muchammad Yuda Tri Ananda
 Tanggal   : 23/09/2024
 """
@@ -8,25 +11,22 @@ Tanggal   : 23/09/2024
 """
 **************************************************************
 DEFINISI DAN SPESIFIKASI
-HariKe1900 : integer [1..31], integer [1..12], integer [0..99] → integer [1..366]
-{HariKe1900(d,m,y) dari suatu tanggal <d,m,y> adalah hari absolut dihitung mulai 1 Januari tahun 1900+y. 1 Januari tahun 1900+y adalah hari ke 1}
+**************************************************************
 
-dpm : integer [1..12] → integer [1..366]
-{dpm(B) adalah jumlah hari kumulatif dari tanggal 1 Januari hingga tanggal 1 bulan B pada tahun tertentu, tanpa memperhitungkan tahun kabisat.}
+denumeratorSeq : string → string
+{denumeratorSeq(x) memeriksa apakah urutan angka terulang yang diberikan dalam bentuk string 
+berasal dari hasil pembagian 1 dengan bilangan bulat positif. Parameter:
+x (string): Urutan angka terulang yang ingin diperiksa.
 
-IsKabisat? : integer [0..99] → boolean
-{IsKabisat?(y) menghasilkan True jika tahun 1900+y adalah tahun kabisat, yaitu habis dibagi 4 tetapi tidak habis dibagi 100, atau habis dibagi 400.}
+Fungsi ini akan mengembalikan string yang menyatakan apakah ada penyebut integer yang sesuai 
+atau tidak. Jika ada, format outputnya adalah "Ada: y", di mana y adalah penyebut integer. 
+Jika tidak ada, akan mengembalikan "Tidak ada".}
+
 **************************************************************
 """
 
-"""
-**************************************************************
-REALISASI
-**************************************************************
-"""
 
-
-def denumeratorSeq(x):
+def denumeratorSeq(x: str) -> str:
     sembilan = 10 ** len(x) - 1
     return f"Ada: { sembilan // int(x)}" if sembilan % int(x) == 0 else "Tidak ada"
 
@@ -37,4 +37,5 @@ APLIKASI
 **************************************************************
 """
 
-print(f"{denumeratorSeq('3')} -> Ada: 3", f"{denumeratorSeq('166')} -> Tidak ada")
+print(f"{denumeratorSeq('3')} -> Ada: 3")  # -> 3
+print(f"{denumeratorSeq('166')} -> Tidak ada")  # -> Tidak ada

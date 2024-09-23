@@ -181,6 +181,7 @@ def aturan_diskon(harga, kategori, VIP):
         return diskon(harga, 20) if VIP else diskon(harga, 5)
     if kategori == "makanan":
         return diskon(harga, 15) if VIP else diskon(harga, 2)
+    return harga
 
 
 def aturan_hari(harga, hari, kategori, VIP):
@@ -242,27 +243,25 @@ def EstimateGreatLib(
     JamAkhir,
     Terbenam,
     Terbit,
-    AhliStatistika,
-    AhliMatematika,
-    AhliIlmpuPerpustakaan,
+    AStatistik,
+    AMatematika,
+    APerpustakaan,
     R,
 ):
     rataPengunjung = TabelHari(Hari)
-    rangeNy = max(AhliStatistika, AhliMatematika, AhliIlmpuPerpustakaan) - min(
-        AhliStatistika, AhliMatematika, AhliIlmpuPerpustakaan
+    rangeNy = max(AStatistik, AMatematika, APerpustakaan) - min(
+        AStatistik, AMatematika, APerpustakaan
     )
 
     # FULL SIANG
     if JamAwal >= Terbit and JamAkhir <= Terbenam:
         lamaWaktu = JamAkhir - JamAwal
         return round(lamaWaktu * rangeNy / rataPengunjung, 5)
-    # ==================================================
 
     # FULL MALEM
     if JamAkhir <= Terbit or JamAwal >= Terbenam:
         lamaWaktu = JamAkhir - JamAwal
         return round((lamaWaktu * rangeNy / rataPengunjung) * (R / 100), 5)
-    # ==================================================
 
     # LEWAT TERBIT
     if JamAwal < Terbit and JamAkhir > Terbit and JamAkhir <= Terbenam:
@@ -276,7 +275,6 @@ def EstimateGreatLib(
             / 2,
             5,
         )
-    # ==================================================
 
     # LEWAT TERBENAM
     if (
@@ -295,7 +293,6 @@ def EstimateGreatLib(
             / 2,
             5,
         )
-    # ==================================================
 
     # FULL DUA DUA NY
     if JamAwal < Terbit and JamAkhir > Terbenam:
@@ -311,7 +308,6 @@ def EstimateGreatLib(
             / 3,
             5,
         )
-    # ==================================================
     return "error gblh"
 
 

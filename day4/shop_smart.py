@@ -1,6 +1,9 @@
 """
-Program   : Sequence Bilangan Penyebut
-Deskripsi : Program ini menghitung hari ke-n dari suatu tanggal berdasarkan tahun 1900+y dengan memperhitungkan tahun kabisat.
+Program   : Shop Smart
+Deskripsi : Program ini menghitung harga akhir barang di toko Shop Smart berdasarkan kategori produk, 
+            status keanggotaan, lokasi pembelian, dan hari transaksi. Sistem ini menerapkan diskon 
+            dinamis dan pajak sesuai dengan kebijakan toko, memberikan pelanggan harga yang paling 
+            adil dan sesuai dengan aturan promosi yang berlaku.
 NIM/Nama  : 24060124110142/Muchammad Yuda Tri Ananda
 Tanggal   : 23/09/2024
 """
@@ -8,14 +11,36 @@ Tanggal   : 23/09/2024
 """
 **************************************************************
 DEFINISI DAN SPESIFIKASI
-HariKe1900 : integer [1..31], integer [1..12], integer [0..99] → integer [1..366]
-{HariKe1900(d,m,y) dari suatu tanggal <d,m,y> adalah hari absolut dihitung mulai 1 Januari tahun 1900+y. 1 Januari tahun 1900+y adalah hari ke 1}
+**************************************************************
 
-dpm : integer [1..12] → integer [1..366]
-{dpm(B) adalah jumlah hari kumulatif dari tanggal 1 Januari hingga tanggal 1 bulan B pada tahun tertentu, tanpa memperhitungkan tahun kabisat.}
+diskon : integer, float → float
+{diskon(harga, persen) menghitung harga setelah penerapan diskon berdasarkan persen yang diberikan.
+Fungsi ini mengembalikan harga setelah diskon sebagai float.}
 
-IsKabisat? : integer [0..99] → boolean
-{IsKabisat?(y) menghasilkan True jika tahun 1900+y adalah tahun kabisat, yaitu habis dibagi 4 tetapi tidak habis dibagi 100, atau habis dibagi 400.}
+pajak : integer, float → float
+{pajak(harga, persen) menghitung harga setelah penambahan pajak berdasarkan persen yang diberikan.
+Fungsi ini mengembalikan harga setelah pajak sebagai float.}
+
+aturan_diskon : integer, string, boolean → float
+{aturan_diskon(harga, kategori, VIP) menghitung harga setelah penerapan diskon berdasarkan kategori 
+barang dan status keanggotaan.
+Fungsi ini mengembalikan harga setelah penerapan diskon sebagai float.}
+
+aturan_hari : float, string, string, boolean → float
+{aturan_hari(harga, hari, kategori, VIP) menghitung harga setelah penerapan diskon atau pajak tambahan 
+berdasarkan hari transaksi dan kategori barang.
+Fungsi ini mengembalikan harga setelah penerapan tambahan diskon atau pajak sebagai float.}
+
+aturan_pajak : float, string → float
+{aturan_pajak(harga, lokasi) menghitung harga setelah penerapan pajak berdasarkan lokasi pembelian.
+Fungsi ini mengembalikan harga setelah penerapan pajak sebagai float.}
+
+hargaAkhir : integer, string, boolean, string, string → integer
+{hargaAkhir(harga, kategori, VIP, lokasi, hari) menghitung harga akhir barang dengan mempertimbangkan 
+diskon, pajak, dan aturan tambahan berdasarkan kategori barang, status keanggotaan, lokasi, dan hari 
+transaksi.
+Fungsi ini akan mengembalikan harga akhir barang sebagai integer yang lebih besar dari 0.}
+
 **************************************************************
 """
 
@@ -41,6 +66,7 @@ def aturan_diskon(harga, kategori, VIP):
         return diskon(harga, 20) if VIP else diskon(harga, 5)
     if kategori == "makanan":
         return diskon(harga, 15) if VIP else diskon(harga, 2)
+    return harga
 
 
 def aturan_hari(harga, hari, kategori, VIP):
@@ -50,6 +76,7 @@ def aturan_hari(harga, hari, kategori, VIP):
         return pajak(harga, 5)
     if hari == "Rabu" and kategori == "pakaian":
         return diskon(harga, 5)
+    return harga
 
 
 def aturan_pajak(harga, lokasi):
@@ -75,6 +102,6 @@ APLIKASI
 
 
 print(
-    f"{hargaAkhir(1000, 'elektronik', True, 'dalam negeri', 'Jumat')} -> 770000",
-    f"{hargaAkhir(500000, 'pakaian', False, 'luar negeri', 'Rabu')} -> 541500",
+    f"{hargaAkhir(1000, 'elektronik', True, 'dalam negeri', 'Jumat')}",  # -> 770000
+    f"{hargaAkhir(500000, 'pakaian', False, 'luar negeri', 'Rabu')}",  # -> 541500
 )
