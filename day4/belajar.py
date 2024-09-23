@@ -92,8 +92,10 @@ print(f"{denumeratorSeq('3')} -> Ada: 3", f"{denumeratorSeq('166')} -> Tidak ada
 Program   : Gradien Magis
 """
 
+
 def f(x):
     return 3 * x**2 + 2 * x - 5
+
 
 def gradien(a, b):
     return (f(a) - f(b)) / (a - b)
@@ -188,6 +190,7 @@ def aturan_hari(harga, hari, kategori, VIP):
         return pajak(harga, 5)
     if hari == "Rabu" and kategori == "pakaian":
         return diskon(harga, 5)
+    return harga
 
 
 def aturan_pajak(harga, lokasi):
@@ -195,6 +198,7 @@ def aturan_pajak(harga, lokasi):
         return pajak(harga, 10)
     if lokasi == "luar negeri":
         return pajak(harga, 20)
+    return harga
 
 
 def hargaAkhir(harga, kategori, VIP, lokasi, hari):
