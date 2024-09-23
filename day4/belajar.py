@@ -92,11 +92,10 @@ print(f"{denumeratorSeq('3')} -> Ada: 3", f"{denumeratorSeq('166')} -> Tidak ada
 Program   : Gradien Magis
 """
 
+def f(x):
+    return 3 * x**2 + 2 * x - 5
 
 def gradien(a, b):
-    def f(x):
-        return 3 * x**2 + 2 * x - 5
-
     return (f(a) - f(b)) / (a - b)
 
 

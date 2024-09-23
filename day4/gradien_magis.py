@@ -26,10 +26,11 @@ REALISASI
 """
 
 
-def gradien(a, b):
-    def f(x):
-        return 3 * x**2 + 2 * x - 5
+def f(x):
+    return 3 * x**2 + 2 * x - 5
 
+
+def gradien(a, b):
     return (f(a) - f(b)) / (a - b)
 
 
