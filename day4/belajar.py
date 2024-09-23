@@ -6,9 +6,11 @@ Program   : Jam Pasir Ajaib
 
 
 def jam(j, m, s):
-    if j > 24 or m > 59 or s > 59:
-        return "Waktu tidak valid"
-    return f"Jam: {j}, Menit: {m}, Detik: {s}"
+    return (
+        f"Jam: {j}, Menit: {m}, Detik: {s}"
+        if j <= 24 and m <= 59 and s <= 59
+        else "Waktu tidak valid"
+    )
 
 
 print(
@@ -118,7 +120,7 @@ def pajak(harga, persen):
 def hargaAkhir(harga, kategori, VIP, lokasi, hari):
     hargaAkhir = harga
 
-    # ATURAN DISKON 
+    # ATURAN DISKON
     if kategori == "elektronik":
         if VIP:
             hargaAkhir = diskon(hargaAkhir, 30)
@@ -171,24 +173,22 @@ def pajak(harga, persen):
     return harga + (harga * persen / 100)
 
 
-def aturan_diskon(kategori, VIP):
+def aturan_diskon(harga, kategori, VIP):
     if kategori == "elektronik":
-        return 30 if VIP else 10
+        return diskon(harga, 30) if VIP else diskon(harga, 10)
     if kategori == "pakaian":
-        return 20 if VIP else 5
+        return diskon(harga, 20) if VIP else diskon(harga, 5)
     if kategori == "makanan":
-        return 15 if VIP else 2
-    return 0
+        return diskon(harga, 15) if VIP else diskon(harga, 2)
 
 
 def aturan_hari(harga, hari, kategori, VIP):
     if hari == "Jumat" or hari == "Sabtu":
-        return diskon(harga, 5) if VIP else 0
+        return diskon(harga, 5) if VIP else harga
     if hari == "Minggu":
         return pajak(harga, 5)
     if hari == "Rabu" and kategori == "pakaian":
         return diskon(harga, 5)
-    return harga
 
 
 def aturan_pajak(harga, lokasi):
@@ -196,12 +196,10 @@ def aturan_pajak(harga, lokasi):
         return pajak(harga, 10)
     if lokasi == "luar negeri":
         return pajak(harga, 20)
-    return harga
 
 
 def hargaAkhir(harga, kategori, VIP, lokasi, hari):
-    diskon_persen = aturan_diskon(kategori, VIP)
-    hargaSetelahDiskon = diskon(harga, diskon_persen)
+    hargaSetelahDiskon = aturan_diskon(harga, kategori, VIP)
     hargaSetelahHari = aturan_hari(hargaSetelahDiskon, hari, kategori, VIP)
     hargaFinal = aturan_pajak(hargaSetelahHari, lokasi)
 
@@ -251,33 +249,33 @@ def EstimateGreatLib(
         AhliStatistika, AhliMatematika, AhliIlmpuPerpustakaan
     )
 
-    # FULL SIANG =======================================
+    # FULL SIANG
     if JamAwal >= Terbit and JamAkhir <= Terbenam:
         lamaWaktu = JamAkhir - JamAwal
         return round(lamaWaktu * rangeNy / rataPengunjung, 5)
     # ==================================================
 
-    # FULL MALEM =======================================
+    # FULL MALEM
     if JamAkhir <= Terbit or JamAwal >= Terbenam:
         lamaWaktu = JamAkhir - JamAwal
-        return round((lamaWaktu * rangeNy / rataPengunjung) * (R / 100.0), 5)
+        return round((lamaWaktu * rangeNy / rataPengunjung) * (R / 100), 5)
     # ==================================================
 
-    # LEWAT TERBIT =====================================
+    # LEWAT TERBIT
     if JamAwal < Terbit and JamAkhir > Terbit and JamAkhir <= Terbenam:
         siang = JamAkhir - Terbit
         malem = Terbit - JamAwal
         return round(
             (
                 (siang * rangeNy / rataPengunjung)
-                + (malem * rangeNy / rataPengunjung) * (R / 100.0)
+                + (malem * rangeNy / rataPengunjung) * (R / 100)
             )
             / 2,
             5,
         )
     # ==================================================
 
-    # LEWAT TERBENAM ===================================
+    # LEWAT TERBENAM
     if (
         JamAwal >= Terbit
         and JamAkhir > Terbenam
@@ -289,14 +287,14 @@ def EstimateGreatLib(
         return round(
             (
                 (siang * rangeNy / rataPengunjung)
-                + (malem * rangeNy / rataPengunjung) * (R / 100.0)
+                + (malem * rangeNy / rataPengunjung) * (R / 100)
             )
             / 2,
             5,
         )
     # ==================================================
 
-    # FULL DUA DUA NY ==================================
+    # FULL DUA DUA NY
     if JamAwal < Terbit and JamAkhir > Terbenam:
         siang = Terbenam - Terbit
         malemSebelum = Terbit - JamAwal
@@ -304,8 +302,8 @@ def EstimateGreatLib(
         return round(
             (
                 (siang * rangeNy / rataPengunjung)
-                + (malemSebelum * rangeNy / rataPengunjung) * (R / 100.0)
-                + (malemSesudah * rangeNy / rataPengunjung) * (R / 100.0)
+                + (malemSebelum * rangeNy / rataPengunjung) * (R / 100)
+                + (malemSesudah * rangeNy / rataPengunjung) * (R / 100)
             )
             / 3,
             5,
