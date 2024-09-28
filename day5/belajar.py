@@ -143,11 +143,11 @@ def Year(date):
 
 def MakeDate(Hr, Bln, Thn):
     if Hr < 1 or Hr > 31:
-        return "Error"
+        return f"Error Hr: {Hr}"
     if Bln < 1 or Bln > 12:
-        return "Error"
+        return f"Error Bln: {Bln}"
     if Thn < 1:
-        return "Error"
+        return f"Error Thn: {Thn}"
     return [Hr, Bln, Thn]
 
 
@@ -189,10 +189,97 @@ def Yesterday(date):
     return MakeDate(Day(date) - 1, Month(date), Year(date))
 
 
-def NextNDay(date, n):
+def NextNDay(date, n):  # rekursiv gk di bolehin kakakny anjfg
     if n == 0:
         return date
     return NextNDay(NextDay(date), n - 1)
+
+
+def HrKeDate(Thn, TotalHr):
+    if TotalHr <= 31:
+        return MakeDate(TotalHr, 1, Thn)
+    if TotalHr <= (31 + (29 if IsKabisat(Thn) else 28)):
+        return MakeDate(TotalHr - 31, 2, Thn)
+    if TotalHr <= (62 + (29 if IsKabisat(Thn) else 28)):
+        return MakeDate(TotalHr - (31 + (29 if IsKabisat(Thn) else 28)), 3, Thn)
+    if TotalHr <= (92 + (29 if IsKabisat(Thn) else 28)):
+        return MakeDate(TotalHr - (62 + (29 if IsKabisat(Thn) else 28)), 4, Thn)
+    if TotalHr <= (123 + (29 if IsKabisat(Thn) else 28)):
+        return MakeDate(TotalHr - (92 + (29 if IsKabisat(Thn) else 28)), 5, Thn)
+    if TotalHr <= (153 + (29 if IsKabisat(Thn) else 28)):
+        return MakeDate(
+            TotalHr - (123 + (29 if IsKabisat(Thn) else 28)),
+            6,
+            Thn,
+        )
+    if TotalHr <= (184 + (29 if IsKabisat(Thn) else 28)):
+        return MakeDate(
+            TotalHr - (153 + (29 if IsKabisat(Thn) else 28)),
+            7,
+            Thn,
+        )
+    if TotalHr <= (215 + (29 if IsKabisat(Thn) else 28)):
+        return MakeDate(
+            TotalHr - (184 + (29 if IsKabisat(Thn) else 28)),
+            8,
+            Thn,
+        )
+    if TotalHr <= (245 + (29 if IsKabisat(Thn) else 28)):
+        return MakeDate(
+            TotalHr - (215 + (29 if IsKabisat(Thn) else 28)),
+            9,
+            Thn,
+        )
+    if TotalHr <= (276 + (29 if IsKabisat(Thn) else 28)):
+        return MakeDate(
+            TotalHr - (245 + (29 if IsKabisat(Thn) else 28)),
+            10,
+            Thn,
+        )
+    if TotalHr <= (306 + (29 if IsKabisat(Thn) else 28)):
+        return MakeDate(
+            TotalHr - (276 + (29 if IsKabisat(Thn) else 28)),
+            11,
+            Thn,
+        )
+    if TotalHr <= (337 + (29 if IsKabisat(Thn) else 28)):
+        return MakeDate(
+            TotalHr - (306 + (29 if IsKabisat(Thn) else 28)),
+            12,
+            Thn,
+        )
+
+
+def NextNDay(date, N):
+    if (
+        dpm(Month(date))
+        + Day(date)
+        - 1
+        + (1 if Month(date) > 2 and IsKabisat(Year(date)) else 0)
+    ) + N > (366 if IsKabisat(Year(date)) else 365):
+        return HrKeDate(
+            Year(date) + 1,
+            (
+                (
+                    dpm(Month(date))
+                    + Day(date)
+                    - 1
+                    + (1 if Month(date) > 2 and IsKabisat(Year(date)) else 0)
+                )
+                + N
+                - (366 if IsKabisat(Year(date)) else 365)
+            ),
+        )
+    return HrKeDate(
+        Year(date),
+        (
+            dpm(Month(date))
+            + Day(date)
+            - 1
+            + (1 if Month(date) > 2 and IsKabisat(Year(date)) else 0)
+        )
+        + N,
+    )
 
 
 def dpm(bulan: int) -> int:
@@ -262,7 +349,14 @@ print(
     f"IsAfter: <1,11,2024>, <2,1,2024> -> {IsAfter(MakeDate(1, 11, 2024), MakeDate(2, 1, 2024))}"
 )
 print(f"IsKabisat: 2024 -> {IsKabisat(2024)}")
-print(f"NextNDay: <1,1,2024>, 3 -> {NextNDay(MakeDate(1, 1, 2024), 3)}")
+print(f"NextNDay: <1,1,2023>, 100 -> {NextNDay(MakeDate(1, 1, 2023), 100)}")
+print(f"NextNDay: <31,12,2023>, 1 -> {NextNDay(MakeDate(31, 12, 2023), 1)}")
+print(f"NextNDay: <15,6,2023>, 0 -> {NextNDay(MakeDate(15, 6, 2023), 0)}")
+print(f"NextNDay: <10,4,2023>, 5 -> {NextNDay(MakeDate(10, 4, 2023), 5)}")
+print(f"NextNDay: <28,2,2024>, 2 -> {NextNDay(MakeDate(28, 2, 2024), 2)}")
+print(f"NextNDay: <28,2,2024>, 1 -> {NextNDay(MakeDate(28, 2, 2024), 1)}")
+print(f"NextNDay: <31,12,2023>, 365 -> {NextNDay(MakeDate(31, 12, 2023), 365)}")
+print(f"NextNDay: <1,1,2024>, 366 -> {NextNDay(MakeDate(1, 1, 2024), 366)}")
 
 """
 3. Tipe bentukan garis (isSejajar, panjang garis)
@@ -411,10 +505,13 @@ def RangeNilai(MHS2, MaxSkrg, MinSkrg, i):
 
 
 print(
-    f"""Range Nilai: {hitungRangeNilai([
-    MakeMHS2(24060124110142, "69942", 100),
-    MakeMHS2(24060124110142, "69942", 43),
-    MakeMHS2(24060124110142, "69942", 76),
-    MakeMHS2(24060124110142, "69942", 69),
-])}"""
-)  # -> Range Nilai: ['69942', 100, 43, 57]
+    f"""Range Nilai: {
+        hitungRangeNilai(
+            [
+    MakeMHS2(24060124110142, "69", 100),
+    MakeMHS2(24060124110142, "69", 43),
+    MakeMHS2(24060124110142, "69", 76),
+    MakeMHS2(24060124110142, "69", 69),
+            ]
+)}"""
+)  # -> Range Nilai: ['69', 100, 43, 57]
