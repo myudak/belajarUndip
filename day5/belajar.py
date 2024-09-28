@@ -189,7 +189,7 @@ def Yesterday(date):
     return MakeDate(Day(date) - 1, Month(date), Year(date))
 
 
-def NextNDay(date, n):  # rekursiv gk di bolehin kakakny anjfg
+def NextNDay(date, n):  # rekursiv gk di bolehin kakakny anjfskdjk
     if n == 0:
         return date
     return NextNDay(NextDay(date), n - 1)
