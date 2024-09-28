@@ -505,8 +505,8 @@ def RangeNilai(MHS2, MaxSkrg, MinSkrg, i):
 
 
 def hitungRangeNilai(MHS2):
-    return RangeNilai(
-        MHS2,
+    return [
+        MHS2KodeMatkul(MHS2[0]),
         max4(
             MHS2Nilai(MHS2[0]),
             MHS2Nilai(MHS2[1]),
@@ -519,8 +519,19 @@ def hitungRangeNilai(MHS2):
             MHS2Nilai(MHS2[2]),
             MHS2Nilai(MHS2[3]),
         ),
-        0,
-    )
+        max4(
+            MHS2Nilai(MHS2[0]),
+            MHS2Nilai(MHS2[1]),
+            MHS2Nilai(MHS2[2]),
+            MHS2Nilai(MHS2[3]),
+        )
+        - min4(
+            MHS2Nilai(MHS2[0]),
+            MHS2Nilai(MHS2[1]),
+            MHS2Nilai(MHS2[2]),
+            MHS2Nilai(MHS2[3]),
+        ),
+    ]
 
 
 def max2(a: int, b: int) -> int:
