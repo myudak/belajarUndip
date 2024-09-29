@@ -54,7 +54,16 @@ def IsGtP(P1, P2):
 
 
 print(
+    f"AddP: <3,1>, <2,1> -> {AddP(MakeP(3, 1), MakeP(2, 1))}",
+)
+print(
     f"IsGtP: <3,1>, <2,1> -> {IsGtP(MakeP(3, 1), MakeP(2, 1))}",
+)
+print(
+    f"IsLtp: <3,1>, <2,1> -> {IsLtp(MakeP(3, 1), MakeP(2, 1))}",
+)
+print(
+    f"IsEqP: <3,1>, <3,1> -> {IsEqP(MakeP(3, 1), MakeP(3, 1))}",
 )
 
 """
@@ -328,7 +337,7 @@ print(f"NextNDay: <10,4,2023>, 5 -> {NextNDay(MakeDate(10, 4, 2023), 5)}")
 print(f"NextNDay: <28,2,2024>, 2 -> {NextNDay(MakeDate(28, 2, 2024), 2)}")
 print(f"NextNDay: <28,2,2024>, 1 -> {NextNDay(MakeDate(28, 2, 2024), 1)}")
 print(f"NextNDay: <31,12,2023>, 365 -> {NextNDay(MakeDate(31, 12, 2023), 365)}")
-print(f"NextNDay: <1,1,2024>, 366 -> {NextNDay(MakeDate(1, 1, 2024), 730)}")
+print(f"NextNDay: <1,1,2024>, 366 -> {NextNDay(MakeDate(1, 1, 2024), 366)}")
 
 """
 3. Tipe bentukan garis (isSejajar, panjang garis)
