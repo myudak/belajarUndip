@@ -492,6 +492,10 @@ def MakeMHS3(KodeMatkul, NamaMatkul):
     return [KodeMatkul, NamaMatkul]
 
 
+def MakeRangeNilai(KodeMatkul, NilaiTertinggi, NilaiTerendah, RangeNilai):
+    return [KodeMatkul, NilaiTertinggi, NilaiTerendah, RangeNilai]
+
+
 def hitungRangeNilai(MHS2):  # gk boleh rekursiv anjhhjsdhjs
     return RangeNilai(MHS2, MHS2Nilai(MHS2[0]), MHS2Nilai(MHS2[0]), 0)
 
@@ -505,7 +509,7 @@ def RangeNilai(MHS2, MaxSkrg, MinSkrg, i):
 
 
 def hitungRangeNilai(MHS2):
-    return [
+    return MakeRangeNilai(
         MHS2KodeMatkul(MHS2[0]),
         max4(
             MHS2Nilai(MHS2[0]),
@@ -531,7 +535,7 @@ def hitungRangeNilai(MHS2):
             MHS2Nilai(MHS2[2]),
             MHS2Nilai(MHS2[3]),
         ),
-    ]
+    )
 
 
 def max2(a: int, b: int) -> int:
