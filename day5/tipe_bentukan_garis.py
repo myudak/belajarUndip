@@ -1,6 +1,6 @@
 """
 Program   : Tipe bentukan GARIS
-Deskripsi : Didefinisikan suatu type bernama Pecahan, yang terdiri dari pembilang dan penyebut. Berikut ini adalah teks dalam notasi fungsional untuk type pecahan tersebut. Perhatikanlah bahwa realisasi fungsi hanya dilakukan untuk operator aritmatika dan relasional terhadap pecahan. Realisasi selektor hanya diberikan secara konseptual, karena nantinya akan diserahkan implementasinya ke bahasa pemrograman 
+Deskripsi : Program Tipe Bentukan Garis adalah sebuah program yang berfungsi untuk memodelkan dan mengelola garis dalam bidang 2 dimensi menggunakan tipe bentukan (data structures). Program ini memungkinkan pengguna untuk membuat dan mengoperasikan garis berdasarkan titik-titik koordinat, serta menghitung berbagai sifat garis seperti panjang garis, gradien, dan apakah dua garis sejajar. Program ini juga memungkinkan pengguna untuk memeriksa apakah garis-garis tersebut dapat membentuk bangun datar tertentu seperti persegi atau jajaran genjang.
 NIM/Nama  : 24060124110142/Muchammad Yuda Tri Ananda
 Tanggal   : 29/09/2024
 """

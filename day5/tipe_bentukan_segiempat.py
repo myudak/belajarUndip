@@ -1,6 +1,6 @@
 """
-Program   : Tipe bentukan GARIS
-Deskripsi : Didefinisikan suatu type bernama Pecahan, yang terdiri dari pembilang dan penyebut. Berikut ini adalah teks dalam notasi fungsional untuk type pecahan tersebut. Perhatikanlah bahwa realisasi fungsi hanya dilakukan untuk operator aritmatika dan relasional terhadap pecahan. Realisasi selektor hanya diberikan secara konseptual, karena nantinya akan diserahkan implementasinya ke bahasa pemrograman 
+Program   : Tipe bentukan SEGIEMPAT
+Deskripsi : sebuah program yang digunakan untuk melakukan berbagai operasi terhadap empat titik (point) pada bidang koordinat kartesius yang membentuk suatu segiempat. Program ini memiliki beberapa fungsi utama, IsBujurSangkar Memeriksa apakah empat titik yang diberikan membentuk bujur sangkar (semua sisi sama panjang dan sudut siku-siku). IsJajargenjang Memeriksa apakah empat titik yang diberikan membentuk jajargenjang (dua pasang sisi berlawanan sejajar dan sama panjang). AreaBujurSangkar Menghitung luas bujur sangkar yang dibentuk oleh empat titik. Jika titik-titik tersebut tidak membentuk bujur sangkar, fungsi akan mengembalikan pesan "BUKAN BUJUR SANGKAR". Fungsi-fungsi ini memanfaatkan operasi dasar pada titik-titik, seperti menghitung jarak antara dua titik dan gradien garis untuk menentukan kemiringan garis. Program ini dapat membantu pengguna memeriksa bentuk geometri berdasarkan titik-titik yang dimasukkan.
 NIM/Nama  : 24060124110142/Muchammad Yuda Tri Ananda
 Tanggal   : 29/09/2024
 """
