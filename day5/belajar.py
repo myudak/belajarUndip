@@ -195,6 +195,38 @@ def NextNDay(date, n):  # rekursiv gk di bolehin kakakny anjfskdjk
     return NextNDay(NextDay(date), n - 1)
 
 
+def NextNDay(date, N):
+    if (
+        dpm(Month(date))
+        + Day(date)
+        - 1
+        + (1 if Month(date) > 2 and IsKabisat(Year(date)) else 0)
+    ) + N > (366 if IsKabisat(Year(date)) else 365):
+        return HrKeDate(
+            Year(date) + 1,
+            (
+                (
+                    dpm(Month(date))
+                    + Day(date)
+                    - 1
+                    + (1 if Month(date) > 2 and IsKabisat(Year(date)) else 0)
+                )
+                + N
+                - (366 if IsKabisat(Year(date)) else 365)
+            ),
+        )
+    return HrKeDate(
+        Year(date),
+        (
+            dpm(Month(date))
+            + Day(date)
+            - 1
+            + (1 if Month(date) > 2 and IsKabisat(Year(date)) else 0)
+        )
+        + N,
+    )
+
+
 def HrKeDate(Thn, TotalHr):
     if TotalHr <= 31:
         return MakeDate(TotalHr, 1, Thn)
@@ -248,38 +280,6 @@ def HrKeDate(Thn, TotalHr):
             12,
             Thn,
         )
-
-
-def NextNDay(date, N):
-    if (
-        dpm(Month(date))
-        + Day(date)
-        - 1
-        + (1 if Month(date) > 2 and IsKabisat(Year(date)) else 0)
-    ) + N > (366 if IsKabisat(Year(date)) else 365):
-        return HrKeDate(
-            Year(date) + 1,
-            (
-                (
-                    dpm(Month(date))
-                    + Day(date)
-                    - 1
-                    + (1 if Month(date) > 2 and IsKabisat(Year(date)) else 0)
-                )
-                + N
-                - (366 if IsKabisat(Year(date)) else 365)
-            ),
-        )
-    return HrKeDate(
-        Year(date),
-        (
-            dpm(Month(date))
-            + Day(date)
-            - 1
-            + (1 if Month(date) > 2 and IsKabisat(Year(date)) else 0)
-        )
-        + N,
-    )
 
 
 def dpm(bulan: int) -> int:
