@@ -24,6 +24,14 @@ DEFINISI DAN SPESIFIKASI SELEKTOR DENGAN FUNGSI
         { GarisAwal(G) memberikan titik awal garis G }
     GarisAkhir : garis → point
         { GarisAkhir(G) memberikan titik akhir garis G }
+    GarisSatuSegiempat : segiempat → garis
+	    { GarisSatuSegiEmpat(segiempat) memberikan garis ke satu pada bagian bawah segiempat}
+    GarisDuaSegiempat : segiempat → garis
+	    { GarisDuaSegiEmpat(segiempat) memberikan garis ke dua pada bagian kanan segiempat}
+    GarisTigaSegiempat : segiempat → garis
+	    { GarisTigaSegiEmpat(segiempat) memberikan garis ke tiga pada bagian atas segiempat}
+    GarisEmpatSegiempat : segiempat → garis
+	    { GarisEmpatSegiEmpat(segiempat) memberikan garis ke empat pada bagian kiri segiempat}
 
 DEFINISI DAN SPESIFIKASI KONSTRUKTOR
     MakePoint : real, real → point
