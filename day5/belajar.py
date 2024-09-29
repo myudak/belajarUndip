@@ -178,14 +178,14 @@ def Yesterday(date):
     if Day(date) == 1:
         if Month(date) in [5, 7, 8, 10, 12]:
             return MakeDate(30, Month(date) - 1, Year(date))
+        if Month(date) in [2, 4, 6, 9, 11]:
+            return MakeDate(31, Month(date) - 1, Year(date))
         if Month(date) == 1:
             return MakeDate(31, 12, Year(date) - 1)
         if Month(date) == 3:
             if IsKabisat(Year(date)):
                 return MakeDate(29, 2, Year(date))
             return MakeDate(28, 2, Year(date))
-        if Month(date) in [2, 4, 6, 9, 11]:
-            return MakeDate(31, Month(date) - 1, Year(date))
     return MakeDate(Day(date) - 1, Month(date), Year(date))
 
 
@@ -239,47 +239,19 @@ def HrKeDate(Thn, TotalHr):
     if TotalHr <= (123 + (29 if IsKabisat(Thn) else 28)):
         return MakeDate(TotalHr - (92 + (29 if IsKabisat(Thn) else 28)), 5, Thn)
     if TotalHr <= (153 + (29 if IsKabisat(Thn) else 28)):
-        return MakeDate(
-            TotalHr - (123 + (29 if IsKabisat(Thn) else 28)),
-            6,
-            Thn,
-        )
+        return MakeDate(TotalHr - (123 + (29 if IsKabisat(Thn) else 28)), 6, Thn)
     if TotalHr <= (184 + (29 if IsKabisat(Thn) else 28)):
-        return MakeDate(
-            TotalHr - (153 + (29 if IsKabisat(Thn) else 28)),
-            7,
-            Thn,
-        )
+        return MakeDate(TotalHr - (153 + (29 if IsKabisat(Thn) else 28)), 7, Thn)
     if TotalHr <= (215 + (29 if IsKabisat(Thn) else 28)):
-        return MakeDate(
-            TotalHr - (184 + (29 if IsKabisat(Thn) else 28)),
-            8,
-            Thn,
-        )
+        return MakeDate(TotalHr - (184 + (29 if IsKabisat(Thn) else 28)), 8, Thn)
     if TotalHr <= (245 + (29 if IsKabisat(Thn) else 28)):
-        return MakeDate(
-            TotalHr - (215 + (29 if IsKabisat(Thn) else 28)),
-            9,
-            Thn,
-        )
+        return MakeDate(TotalHr - (215 + (29 if IsKabisat(Thn) else 28)), 9, Thn)
     if TotalHr <= (276 + (29 if IsKabisat(Thn) else 28)):
-        return MakeDate(
-            TotalHr - (245 + (29 if IsKabisat(Thn) else 28)),
-            10,
-            Thn,
-        )
+        return MakeDate(TotalHr - (245 + (29 if IsKabisat(Thn) else 28)), 10, Thn)
     if TotalHr <= (306 + (29 if IsKabisat(Thn) else 28)):
-        return MakeDate(
-            TotalHr - (276 + (29 if IsKabisat(Thn) else 28)),
-            11,
-            Thn,
-        )
+        return MakeDate(TotalHr - (276 + (29 if IsKabisat(Thn) else 28)), 11, Thn)
     if TotalHr <= (337 + (29 if IsKabisat(Thn) else 28)):
-        return MakeDate(
-            TotalHr - (306 + (29 if IsKabisat(Thn) else 28)),
-            12,
-            Thn,
-        )
+        return MakeDate(TotalHr - (306 + (29 if IsKabisat(Thn) else 28)), 12, Thn)
 
 
 def dpm(bulan: int) -> int:
@@ -356,7 +328,7 @@ print(f"NextNDay: <10,4,2023>, 5 -> {NextNDay(MakeDate(10, 4, 2023), 5)}")
 print(f"NextNDay: <28,2,2024>, 2 -> {NextNDay(MakeDate(28, 2, 2024), 2)}")
 print(f"NextNDay: <28,2,2024>, 1 -> {NextNDay(MakeDate(28, 2, 2024), 1)}")
 print(f"NextNDay: <31,12,2023>, 365 -> {NextNDay(MakeDate(31, 12, 2023), 365)}")
-print(f"NextNDay: <1,1,2024>, 366 -> {NextNDay(MakeDate(1, 1, 2024), 366)}")
+print(f"NextNDay: <1,1,2024>, 366 -> {NextNDay(MakeDate(1, 1, 2024), 730)}")
 
 """
 3. Tipe bentukan garis (isSejajar, panjang garis)
@@ -563,5 +535,5 @@ print(
     MakeMHS2(24060124110142, "69", 76),
     MakeMHS2(24060124110142, "69", 69),
             ]
-)}"""
+    )}"""
 )  # -> Range Nilai: ['69', 100, 43, 57]
