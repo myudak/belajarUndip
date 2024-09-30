@@ -38,11 +38,10 @@ DEFINISI DAN SPESIFIKASI PREDIKAT
         { IsSejajar(garisAwal, garisAkhir) mengecek apakah garis yang dibentuk oleh Absis(garisAwal)-Ordinat(garisAwal) dan Absis(GarisAkhir)-Ordinat(GarisAkhir) sejajar. Dua garis sejajar jika dan hanya jika gradien (kemiringan) kedua garis sama }
 
 DEFINISI DAN SPESIFIKASI FUNGSI TAMBAHAN
-    Gradien : point, point → real
-        { Gradien(P1, P2) menghitung gradien (kemiringan) dari garis yang dibentuk oleh dua titik P1 dan P2 }
-    Jarak : point, point → real
-        { Jarak(P1, P2) menghitung jarak antara dua titik P1 dan P2 menggunakan rumus jarak Euclidean }
-
+    Gradien : garis → real
+        { Gradien(g) menghitung gradien (kemiringan) dari garis yang dibentuk}
+    Jarak : garis → real
+        { Jarak(g) menghitung jarak antara dua titik dari garis yang diberikan menggunakan rumus jarak Euclidean }
 **************************************************************
 """
 
@@ -77,46 +76,29 @@ def GarisAkhir(G):
     return G[1]
 
 
-def IsOrigin(P):
-    return Absis(P) == 0 and Ordinat(P) == 0
-
-
 def FX2(x):
     return x * x
 
 
-def Jarak(P1, P2):
-    return (FX2(Absis(P1) - Absis(P2)) + FX2(Ordinat(P1) - Ordinat(P2))) * 0.5
+def Jarak(G):
+    return (
+        FX2(Absis(GarisAwal(G)) - Absis(GarisAkhir(G)))
+        + FX2(Ordinat(GarisAwal(G)) - Ordinat(GarisAkhir(G)))
+    ) ** 0.5
 
 
-def Jarak0(P):
-    return (FX2(Absis(P)) + FX2(Ordinat(P))) * 0.5
-
-
-def Kuadran(P):
-    if Absis(P) > 0 and Ordinat(P) > 0:
-        return "Kuadran 1"
-    if Absis(P) < 0 and Ordinat(P) > 0:
-        return "Kuadran 2"
-    if Absis(P) < 0 and Ordinat(P) < 0:
-        return "Kuadran 3"
-    if Absis(P) > 0 and Ordinat(P) < 0:
-        return "Kuadran 4"
-    return "Gk ad"
-
-
-def Gradien(P1, P2):
-    return (Ordinat(P2) - Ordinat(P1)) / (Absis(P2) - Absis(P1))
-
-
-def IsSejajar(G1, G2):
-    return Gradien(GarisAwal(G1), GarisAkhir(G1)) == Gradien(
-        GarisAwal(G2), GarisAkhir(G2)
+def Gradien(G):
+    return (Ordinat(GarisAwal(G)) - Ordinat(GarisAkhir(G))) / (
+        Absis(GarisAwal(G)) - Absis(GarisAkhir(G))
     )
 
 
+def IsSejajar(G1, G2):
+    return Gradien(G1) == Gradien(G2)
+
+
 def PanjangGaris(G):
-    return Jarak(GarisAwal(G), GarisAkhir(G))
+    return Jarak(G)
 
 
 """
@@ -125,8 +107,7 @@ APLIKASI
 **************************************************************
 """
 print(
-    f"""IsSejajar: <1,3>, <2,3>, <3,3>, <4,3> -> 
-    {
+    f"""IsSejajar: <1,3>, <2,3>, <3,3>, <4,3> -> {
         IsSejajar(
             MakeGaris(
                 MakePoint(1, 3), 
@@ -140,8 +121,7 @@ print(
     }"""
 )
 print(
-    f"""PanjangGaris: <1,3>, <2,3> -> 
-    {
+    f"""PanjangGaris: <1,3>, <2,3> -> {
     PanjangGaris(
         MakeGaris(
             MakePoint(1, 3), 

@@ -41,17 +41,22 @@ DEFINISI DAN SPESIFIKASI KONSTRUKTOR
     MakeSegiempat : garis, garis, garis, garis → segiempat
         { MakeSegiempat(G1, G2, G3, G4) membentuk sebuah segiempat dengan garis G1, G2, G3, dan G4 }
 
-DEFINISI DAN SPESIFIKASI OPERATOR TERHADAP GARIS
-    IsSejajar : garis, garis → boolean
-        { IsSejajar(garisAwal, garisAkhir) mengecek apakah garis yang dibentuk oleh Absis(garisAwal)-Ordinat(garisAwal) dan Absis(GarisAkhir)-Ordinat(GarisAkhir) sejajar. Dua garis sejajar jika dan hanya jika gradien (kemiringan) kedua garis sama }
-    PanjangGaris : garis → real
-        { PanjangGaris(garis) menghitung panjang garis antara dua titik Absis(garis) dan Ordinat(garis) menggunakan rumus jarak Euclidean }
+DEFINISI DAN SPESIFIKASI OPERATOR TERHADAP SEGIEMPAT
+    AreaBujurSangkar : segiempat → real
+        { AreaBujurSangkar(segiempat) menghitung luas area dari bujur sangkar yang diberikan menggunakan rumus kuadrat dari panjang garis}
+
+DEFINISI DAN SPESIFIKASI PREDIKAT
+    IsBujurSangkar? : segiempat → boolean
+        { IsBujurSangkar(segiempat) mengecek apakah segiempat yang diberikan adalah bujur sangkat. Segiempat dikatakan bujur sangkar jika keempat sisinya sama panjang . }
+    IsJajarGenjang? : segiempat → boolean
+        { IsJajarGenjang(segiempat) mengecek apakah segiempat yang diberikan 	adalah jajar genjang. Segiempat dikatakan jajar genjang jika sisi-sisi yang 	berhadapan sama panjang dan sejajar. }
+
 
 DEFINISI DAN SPESIFIKASI FUNGSI TAMBAHAN
-    Gradien : point, point → real
-        { Gradien(P1, P2) menghitung gradien (kemiringan) dari garis yang dibentuk oleh dua titik P1 dan P2 }
-    Jarak : point, point → real
-        { Jarak(P1, P2) menghitung jarak antara dua titik P1 dan P2 menggunakan rumus jarak Euclidean }
+    Gradien : garis → real
+        { Gradien(g) menghitung gradien (kemiringan) dari garis yang dibentuk}
+    Jarak : garis → real
+        { Jarak(g) menghitung jarak antara dua titik dari garis yang diberikan menggunakan rumus jarak Euclidean }
 
 **************************************************************
 """
@@ -107,78 +112,66 @@ def GarisEmpatSegiempat(S):
     return S[3]
 
 
-def IsOrigin(P):
-    return Absis(P) == 0 and Ordinat(P) == 0
-
-
 def FX2(x):
     return x * x
 
 
 def Jarak(P1, P2):
-    return (FX2(Absis(P1) - Absis(P2)) + FX2(Ordinat(P1) - Ordinat(P2))) * 0.5
+    return (FX2(Absis(P1) - Absis(P2)) + FX2(Ordinat(P1) - Ordinat(P2))) ** 0.5
 
 
-def Jarak0(P):
-    return (FX2(Absis(P)) + FX2(Ordinat(P))) * 0.5
-
-
-def Kuadran(P):
-    if Absis(P) > 0 and Ordinat(P) > 0:
-        return "Kuadran 1"
-    if Absis(P) < 0 and Ordinat(P) > 0:
-        return "Kuadran 2"
-    if Absis(P) < 0 and Ordinat(P) < 0:
-        return "Kuadran 3"
-    if Absis(P) > 0 and Ordinat(P) < 0:
-        return "Kuadran 4"
-    return "Gk ad"
-
-
-def Gradien(P1, P2):
-    return (Ordinat(P2) - Ordinat(P1)) / (Absis(P2) - Absis(P1))
-
-
-def IsSejajar(G1, G2):
-    return Gradien(GarisAwal(G1), GarisAkhir(G1)) == Gradien(
-        GarisAwal(G2), GarisAkhir(G2)
+def Gradien(G):
+    return (Ordinat(GarisAwal(G)) - Ordinat(GarisAkhir(G))) / (
+        Absis(GarisAwal(G)) - Absis(GarisAkhir(G))
     )
 
 
-def PanjangGaris(G):
-    return Jarak(GarisAwal(G), GarisAkhir(G))
-
-
 def IsBujurSangkar(segiempat):
-    return Jarak(
-        GarisAwal(GarisSatuSegiempat(segiempat)),
-        GarisAkhir(GarisSatuSegiempat(segiempat)),
-    ) * Jarak(
-        GarisAwal(GarisDuaSegiempat(segiempat)),
-        GarisAkhir(GarisDuaSegiempat(segiempat)),
-    ) == Jarak(
-        GarisAwal(GarisTigaSegiempat(segiempat)),
-        GarisAkhir(GarisTigaSegiempat(segiempat)),
+    return (
+        Jarak(
+            GarisAwal(GarisSatuSegiempat(segiempat)),
+            GarisAkhir(GarisSatuSegiempat(segiempat)),
+        )
+        == Jarak(
+            GarisAwal(GarisDuaSegiempat(segiempat)),
+            GarisAkhir(GarisDuaSegiempat(segiempat)),
+        )
+        == Jarak(
+            GarisAwal(GarisTigaSegiempat(segiempat)),
+            GarisAkhir(GarisTigaSegiempat(segiempat)),
+        )
+        == Jarak(
+            GarisAwal(GarisEmpatSegiempat(segiempat)),
+            GarisAkhir(GarisEmpatSegiempat(segiempat)),
+        )
     )
 
 
 def IsJajargenjang(segiempat):
     return (
         Gradien(
-            GarisAwal(GarisSatuSegiempat(segiempat)),
-            GarisAkhir(GarisSatuSegiempat(segiempat)),
+            MakeGaris(
+                GarisAwal(GarisSatuSegiempat(segiempat)),
+                GarisAkhir(GarisSatuSegiempat(segiempat)),
+            )
         )
         == Gradien(
-            GarisAwal(GarisTigaSegiempat(segiempat)),
-            GarisAkhir(GarisTigaSegiempat(segiempat)),
+            MakeGaris(
+                GarisAwal(GarisTigaSegiempat(segiempat)),
+                GarisAkhir(GarisTigaSegiempat(segiempat)),
+            )
         )
         and Gradien(
-            GarisAwal(GarisSatuSegiempat(segiempat)),
-            GarisAkhir(GarisTigaSegiempat(segiempat)),
+            MakeGaris(
+                GarisAwal(GarisSatuSegiempat(segiempat)),
+                GarisAkhir(GarisTigaSegiempat(segiempat)),
+            )
         )
         == Gradien(
-            GarisAwal(GarisDuaSegiempat(segiempat)),
-            GarisAkhir(GarisDuaSegiempat(segiempat)),
+            MakeGaris(
+                GarisAwal(GarisDuaSegiempat(segiempat)),
+                GarisAkhir(GarisDuaSegiempat(segiempat)),
+            )
         )
         and Jarak(
             GarisAwal(GarisSatuSegiempat(segiempat)),
@@ -226,13 +219,13 @@ print(
     }"""
 )
 print(
-    f"""IsBujurSangkar: <1,3>, <2,3>, <1,2>, <2,2> -> {
+    f"""IsBujurSangkar: <1,3>, <2,3>, <2,2>, <1,2> -> {
         IsBujurSangkar(
             MakeSegiempat(
                 MakeGaris(MakePoint(1, 3), MakePoint(2, 3)), 
-                MakeGaris(MakePoint(2, 3), MakePoint(1, 2)), 
-                MakeGaris(MakePoint(1, 2), MakePoint(2, 2)), 
-                MakeGaris(MakePoint(2, 2), MakePoint(1, 3))
+                MakeGaris(MakePoint(2, 3), MakePoint(2, 2)), 
+                MakeGaris(MakePoint(2, 2), MakePoint(1, 2)), 
+                MakeGaris(MakePoint(1, 2), MakePoint(1, 3))
              )
         )
     }"""

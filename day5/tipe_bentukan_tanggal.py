@@ -55,6 +55,8 @@ DEFINISI DAN SPESIFIKASI OPERATOR/FUNGSI LAIN TERHADAP DATE
     NextNday : date,integer [0..366] → date 
         { NextNDay(D,N) : Menghitung date yang merupakan N hari (N adalah nilai integer) 
         sesudah dari date D yang diberikan} 
+    TotalHrKeDate: Thn, TotalHr → date
+        {TotalHrKeDate(Thn, TotalHr) : Menghitung jumlah hari terhadap 1 Januari pada tahun y, dengan memperhitungkan apakah y adalah tahun kabisat }
     HariKe1900: date → integer [0..366] 
         {HariKe1900(D) : Menghitung jumlah hari terhadap 1 Januari pada tahun y, dengan 
         memperhitungkan apakah y adalah tahun kabisat }
@@ -152,7 +154,7 @@ def NextNDay(date, N):
         - 1
         + (1 if Month(date) > 2 and IsKabisat(Year(date)) else 0)
     ) + N > (366 if IsKabisat(Year(date)) else 365):
-        return HrKeDate(
+        return TotalHrKeDate(
             Year(date) + 1,
             (
                 (
@@ -165,7 +167,7 @@ def NextNDay(date, N):
                 - (366 if IsKabisat(Year(date)) else 365)
             ),
         )
-    return HrKeDate(
+    return TotalHrKeDate(
         Year(date),
         (
             dpm(Month(date))
@@ -177,7 +179,7 @@ def NextNDay(date, N):
     )
 
 
-def HrKeDate(Thn, TotalHr):
+def TotalHrKeDate(Thn, TotalHr):
     if TotalHr <= 31:
         return MakeDate(TotalHr, 1, Thn)
     if TotalHr <= (31 + (29 if IsKabisat(Thn) else 28)):
@@ -204,7 +206,7 @@ def HrKeDate(Thn, TotalHr):
         return MakeDate(TotalHr - (306 + (29 if IsKabisat(Thn) else 28)), 12, Thn)
 
 
-def dpm(bulan: int) -> int:
+def dpm(bulan):
     if bulan == 1:
         return 1
     if bulan == 2:
@@ -231,11 +233,11 @@ def dpm(bulan: int) -> int:
         return 335
 
 
-def IsKabisat(y: int) -> bool:
+def IsKabisat(y):
     return (y % 4 == 0 and y % 100 != 0) or (y % 400 == 0)
 
 
-def HariKe1900(d: int, m: int, y: int) -> int:
+def HariKe1900(d, m, y):
     return dpm(m) + d - 1 + (1 if m > 2 and IsKabisat(y) else 0)
 
 
