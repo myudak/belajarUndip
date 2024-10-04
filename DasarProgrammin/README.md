@@ -1,4 +1,4 @@
-# Belajar dips
+# PRAKTIKUM DASAR PEMOGRAMAN UNIVERSITAS DIPENOGORO
 
 <a name="top"></a>
 [![Abblix OIDC Server](https://if.fsm.undip.ac.id/en//assets/img/logo-departemen1.png)](https://if.fsm.undip.ac.id/id/)
@@ -44,11 +44,26 @@ cd praktikum_undip_daspro
 python .\day5\belajar.py
 ```
 
-## Links
+## For Testing ->
 
-- [DMW Google Drive](https://drive.google.com/drive/folders/1GPAIBpd8y4vcaoRjzUd4MokSFyJS8Ww1?usp=drive_link)
-- [My GitHub](https://github.com/myudak)
-- [My Website](https://myudak.site)
+```bash
+python {path to test.py}
+```
+
+Example :
+
+```bash
+python .\day1\TUGAS_1\test.py
+
+# OUTPUT
+# test_mean_olympique bener
+# test_is_positif bener
+# test_is_an_a bener
+# test_is_valid bener
+# test_ls bener
+
+# bener semua!
+```
 
 ## Contributing
 
