@@ -84,24 +84,34 @@ a. Hitunglah nilai decimal, biner, octal, atau hexa decimal untuk melengkapi tab
 - 6 ÷ 2 = 3 sisa 0
 - 3 ÷ 2 = 1 sisa 1
 - 1 ÷ 2 = 0 sisa 1
-$$54_{10} = 110110_2$$
+$$
+54_{10} = 110110_2
+$$
   - 0.25 × 2 = 0.5 → ambil 0
   - 0.5 × 2 = 1.0 → ambil 1
-$$0.25_{10} = 01_2$$
+$$
+0.25_{10} = 01_2
+$$
  
 ---
  
 ### $54.25_{10} = 66.2_8$
 - 54 ÷ 8 = 6 sisa 6
-$$54_{10} = 66_8$$
+$$
+54_{10} = 66_8
+$$
 - 0.25 × 8 = 2.0 → ambil 2
-$$0.25_{10} = 2_8$$
+$$
+0.25_{10} = 2_8
+$$
  
 ---
  
 ### $54.25_{10} = 36.4_{16}$
 - 54 ÷ 16 = 3 sisa 6
-$$54_{10} = 36_{16}$$
+$$
+54_{10} = 36_{16}
+$$
 - 0.25 × 16 = 4.0 → ambil 4
 $$ 
 0.25_{10} = 4_{16}
@@ -206,48 +216,121 @@ Truth Table
 | 1 | 1 | 1 | 0 | T      |
 | 1 | 1 | 1 | 1 | T      |
 
+## 3. [CPMK07-1(4) bobot 30%]
+
+Desainlah rangkaian kombinasional tersebut **dengan mengikuti langkah-langkah pembuatan rangkaian kombinasional**. <u>Untuk karnaugh map dan penyederhanaan serta penggambaran rangkaian, lakukan hanya untuk output f. {30}</u>
+
+### Steps {dari ppt dasis}
+
+1. Determine required number of inputs and outputs from the specifications.
+2. Derive the truth table for each of the outputs based on their relationships to the input.
+3. Simplify the boolean expression for each output. Use Karnaugh Maps or Boolean algebra.
+4. Draw a logic diagram that represents the simplified Boolean expression. Verify the design by analysing or simulating the circuit.
+
+#### 1. Determine required number of inputs and outputs from the specifications.
+
+- **Input:**
+  - Karena display akan menampilkan angka 0 hingga 9, kita membutuhkan 4 input (representasi biner dari angka 0–9), yang dapat dilambangkan sebagai `A`, `B`, `C`, dan `D`, di mana:
+    - `A` = Most Significant Bit (MSB)
+    - `D` = Least Significant Bit (LSB)
+  - Ini memberikan 16 kemungkinan kombinasi (0000 hingga 1111).
+
+- **Output:**
+  - 7-segment display memiliki 7 output (`a`, `b`, `c`, `d`, `e`, `f`, `g`) yang mengendalikan setiap segmen display.
+  - Kita diminta untuk menyederhanakan dan mendesain logika hanya untuk output `f` (segmen horizontal tengah).
+
+---
+
+#### 2. Derive the truth table for each of the outputs based on their relationships to the input.
+
+Berdasarkan kombinasi input (0–15), kita dapat menentukan segmen mana yang menyala untuk setiap angka. Untuk input yang tidak valid (nilai 10–15), display akan menampilkan "E", yang menyalakan segmen tertentu pada 7-segment display.
+
+Untuk segmen tengah `f`, tabel kebenaran untuk input biner (`A, B, C, D`) adalah sebagai berikut:
+
+| A  | B  | C  | D  | Angka | f (segmen) |
+|----|----|----|----|-------|------------|
+| 0  | 0  | 0  | 0  |   0   |      1     |
+| 0  | 0  | 0  | 1  |   1   |      0     |
+| 0  | 0  | 1  | 0  |   2   |      1     |
+| 0  | 0  | 1  | 1  |   3   |      1     |
+| 0  | 1  | 0  | 0  |   4   |      1     |
+| 0  | 1  | 0  | 1  |   5   |      1     |
+| 0  | 1  | 1  | 0  |   6   |      1     |
+| 0  | 1  | 1  | 1  |   7   |      0     |
+| 1  | 0  | 0  | 0  |   8   |      1     |
+| 1  | 0  | 0  | 1  |   9   |      1     |
+| 1  | 0  | 1  | 0  |   E   |      1     |
+| 1  | 0  | 1  | 1  |   E   |      1     |
+| 1  | 1  | 0  | 0  |   E   |      1     |
+| 1  | 1  | 0  | 1  |   E   |      1     |
+| 1  | 1  | 1  | 0  |   E   |      1     |
+| 1  | 1  | 1  | 1  |   E   |      1     |
+
+- Segmen `f` menyala untuk input yang sesuai dengan angka: 0, 2, 3, 4, 5, 6, 8, 9, dan untuk semua nilai yang tidak valid (menampilkan "E").
+
+#### 3. Simplify the boolean expression for each output. Use Karnaugh Maps or Boolean algebra.
+
+S
+
+#### 4. Draw a logic diagram that represents the simplified Boolean expression. Verify the design by analysing or simulating the circuit.
+
+Menggunakan ekspresi Boolean yang disederhanakan $f = \overline{A}B + C + AD$, kita bisa menggambar diagram logika dengan menggunakan gerbang-gerbang berikut:
+
+- **Gerbang NOT** untuk $\overline{A}$
+- **Gerbang AND** untuk term $\overline{A}B$ dan $AD$
+- **Gerbang OR** untuk menggabungkan $\overline{A}B$, $C$, dan $AD$
+
+Diagram logika akan memiliki:
+
+- **Garis input:** `A`, `B`, `C`, `D`
+- **Gerbang logika:** NOT, AND, dan OR seperti yang dijelaskan.
+
+
 ## 4. [CPMK07-1(4) bobot 20%]
 
 a. Sebuah Multiplexer 8 ke 1 sebagaimana ditunjukkan pada gambar, jika Data bernilai 10101010, dan select line bernilai 101, tentukan berapa nilai Y. Jelaskan bagaimana anda mendapatkan jawaban tersebut! {10}
 
-Data inputs: 10101010, which means:
+Data inputs: 10101010, Artinya:
 
-- A7 = 1
-- A6 = 0
-- A5 = 1
-- A4 = 0
-- A3 = 1
-- A2 = 0
-- A1 = 1
-- A0 = 0
+- A0 = 1
+- A1 = 0
+- A2 = 1
+- A3 = 0
+- A4 = 1
+- A5 = 0
+- A6 = 1
+- A7 = 0
 
-Select lines: 101, which in binary is equivalent to 5 in decimal.
+Select lines: 101, yang dalam binary yang sama dengan 5 dalam decimal.
 
-In a multiplexer 8:1, the select lines choose one of the eight data inputs to pass through to the output Y. The select lines 101 (binary) correspond to A5, so the value of Y will be A5.
+Dalam multiplexer 8:1, baris select yang digunakan untuk memilih satu dari 8 input data untuk menerima output Y. Baris select 101 (binary) sesuai dengan A5, sehingga nilai Y adalah A5.
 
-From the data inputs, A5 = 1.
+From the data inputs, A5 = 0.
 
-**Thus, the value of Y is 1.**
+**Jadi, value dari Y adalah 0.**
+
+
 ![](<https://github.com/myudak/myudak/blob/e29003f9e5650a36f4ecf7cb22a70e352a0533db/public/Main%20(23).png?raw=true>)
 https://circuitverse.org/users/255105/projects/soal_uts_dasis_20234a
 
 b. dekoder 2-ke-4 dengan Enable. Jika Enable aktif dan A bernilai 0, B bernilai 1, berapakah nilai keluaran Y1 Y2 Y3 Y4 {10}
 
-Enable (E) is active, so the decoder will function.
+Enbale (E) aktif, maka dekoder akan berfungsi.
 Inputs:
 
 - A = 0
 - B = 1
 
-For a 2-to-4 decoder:
+Untuk dekoder 2-ke-4:
 
-A = 0 and B = 1 correspond to the second output line being active, which is Y1.
-Thus, the output will be:
+A = 0 dan B = 1 sesuai dengan output kedua yang aktif, yaitu Y1.
+Jadi output akan adalah:
 
 - Y0 = 0
 - Y1 = 1
 - Y2 = 0
 - Y3 = 0
+
 
 ![](<https://github.com/myudak/myudak/blob/994b3b90f09af47963d4c3f653288b913198af43/public/Main%20(24).png?raw=true>)
 https://circuitverse.org/users/255105/projects/soal_uts_dasis_20234a
