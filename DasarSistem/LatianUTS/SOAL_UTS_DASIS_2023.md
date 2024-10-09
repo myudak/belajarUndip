@@ -34,7 +34,7 @@ b. Hitunglah hasil dari operasi aritmatika berikut dalam aritmatika bilangan bin
 a. Dengan menggunakan aljabar Boolean, buktikan bahwa
 
 $$
-\overline{W}\,\overline{X}\,\overline{Z} + \overline{W}X\overline{Y} + \overline{W}XY + W\overline{Y}\,\overline{Z}
+\overline{W}\\overline{X}\,\overline{Z} + \overline{W}X\overline{Y} + \overline{W}XY + W\overline{Y}\,\overline{Z}
 $$
 
 Tuliskan dengan jelas teorema mana yang anda pakai untuk membuktikan kedua
@@ -77,37 +77,39 @@ a. Hitunglah nilai decimal, biner, octal, atau hexa decimal untuk melengkapi tab
  
 ---
  
-### $$ 54.25_{10} = 110110.01_2 $$
+### $54.25_{10} = 110110.01_2$
 - 54 ÷ 2 = 27 sisa 0
 - 27 ÷ 2 = 13 sisa 1
 - 13 ÷ 2 = 6 sisa 1
 - 6 ÷ 2 = 3 sisa 0
 - 3 ÷ 2 = 1 sisa 1
 - 1 ÷ 2 = 0 sisa 1
-$$ 54_{10} = 110110_2 $$
+$$54_{10} = 110110_2$$
   - 0.25 × 2 = 0.5 → ambil 0
   - 0.5 × 2 = 1.0 → ambil 1
-$$0.25_{10} = 01_2 $$
+$$0.25_{10} = 01_2$$
  
 ---
  
-### $$ 54.25_{10} = 66.2_8 $$
+### $54.25_{10} = 66.2_8$
 - 54 ÷ 8 = 6 sisa 6
-$$ 54_{10} = 66_8 $$
+$$54_{10} = 66_8$$
 - 0.25 × 8 = 2.0 → ambil 2
-$$ 0.25_{10} = 2_8 $$
+$$0.25_{10} = 2_8$$
  
 ---
  
-### $$ 54.25_{10} = 36.4_{16} $$
+### $54.25_{10} = 36.4_{16}$
 - 54 ÷ 16 = 3 sisa 6
-$$ 54_{10} = 36_{16} $$
+$$54_{10} = 36_{16}$$
 - 0.25 × 16 = 4.0 → ambil 4
-$$0.25_{10} = 4_{16} $$
+$$ 
+0.25_{10} = 4_{16}
+$$
  
 ---
  
-### $$ 1101011_{2} = 107_{10} $$
+### $1101011_{2} = 107_{10}$
 
 $$
 (1 \times 2^6) + (1 \times 2^5) + (0 \times 2^4) + (1 \times 2^3) + (0 \times 2^2) + (1 \times 2^1) + (1 \times 2^0) 
@@ -118,7 +120,7 @@ $$
 
 ---
 
-### $$ 1101011_2 = 153_8 $$
+### $1101011_2 = 153_8$
 1101011
 
 = 1 101 011
@@ -129,7 +131,7 @@ $$
 
 ---
 
-### $$ 1101011_2 = 6B_{16} $$
+### $1101011_2 = 6B_{16}$
 1101011
 
 = 110 1011
@@ -159,6 +161,51 @@ dikurang = 0011
 Jadi:
 - 5 + 2 = `0111` (7 dalam desimal)
 - 5 - 2 = `0011` (3 dalam desimal)
+
+## 2. [CPMK07-1(3) bobot 25%] Deskripsi soal
+
+a. Dengan menggunakan aljabar Boolean, buktikan bahwa
+
+$$
+\overline{W}\\overline{X}\,\overline{Z} + \overline{W}X\overline{Y} + \overline{W}XY + W\overline{Y}\,\overline{Z}
+$$
+
+Tuliskan dengan jelas teorema mana yang anda pakai untuk membuktikan kedua
+Eptersi tersebut! {15}
+
+---
+
+b. Gambarkan tabel kebenaran dari fungsi berikut dan nyatakan fungsi F dalam
+bentuk sum of minterm!
+
+$$
+F(W,X,Y,Z)= WX+\overline{W}\,\overline{X}\,\overline{Z}\,+\overline{W}\,X\,Y
+$$
+
+{10}
+
+---
+
+Truth Table
+| W | X | Y | Z | Output |
+|---|---|---|---|--------|
+| 0 | 0 | 0 | 0 | T      |
+| 0 | 0 | 0 | 1 | F      |
+| 0 | 0 | 1 | 0 | T      |
+| 0 | 0 | 1 | 1 | F      |
+| 0 | 1 | 0 | 0 | F      |
+| 0 | 1 | 0 | 1 | F      |
+| 0 | 1 | 1 | 0 | T      |
+| 0 | 1 | 1 | 1 | T      |
+| 1 | 0 | 0 | 0 | F      |
+| 1 | 0 | 0 | 1 | F      |
+| 1 | 0 | 1 | 0 | F      |
+| 1 | 0 | 1 | 1 | F      |
+| 1 | 1 | 0 | 0 | T      |
+| 1 | 1 | 0 | 1 | T      |
+| 1 | 1 | 1 | 0 | T      |
+| 1 | 1 | 1 | 1 | T      |
+
 ## 4. [CPMK07-1(4) bobot 20%]
 
 a. Sebuah Multiplexer 8 ke 1 sebagaimana ditunjukkan pada gambar, jika Data bernilai 10101010, dan select line bernilai 101, tentukan berapa nilai Y. Jelaskan bagaimana anda mendapatkan jawaban tersebut! {10}
