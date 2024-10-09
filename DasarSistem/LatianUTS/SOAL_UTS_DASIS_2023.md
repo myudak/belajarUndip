@@ -191,6 +191,8 @@ $$
 
 Tuliskan dengan jelas teorema mana yang anda pakai untuk membuktikan kedua
 Eptersi tersebut! {15}
+mager ajg
+$\overline{W}\,\overline{X}\,\overline{Z}\left(Y+\overline{Y}\right)+\overline{W}X\overline{Y}\left(Z+\overline{Z}\right)+\overline{W}XY\left(Z+\overline{Z}\right)+W\overline{Y}\,\overline{Z}\left(X+\overline{X}\right)$
 
 ---
 
@@ -224,6 +226,7 @@ Truth Table
 | 1 | 1 | 0 | 1 | T      |
 | 1 | 1 | 1 | 0 | T      |
 | 1 | 1 | 1 | 1 | T      |
+![](https://github.com/myudak/myudak/blob/bb267f7c6a6a4c5dd8b06f0241051d7ab070eab2/public/Screenshot%202024-10-09%20202015.png?raw=true)
 
 ## 3. [CPMK07-1(4) bobot 30%]
 
@@ -291,6 +294,8 @@ $$
 \overline{A}\,B\,\overline{C}\,+\,\overline{B}\,\overline{C}\,\overline{D}\,+A\,\overline{B}\,\overline{C}\,+\,\overline{A}\,B\,\overline{D}
 $$
 
+![](https://github.com/myudak/myudak/blob/5332b66b523b5f8f0e255646a5bc71f2c5b0b4d9/public/Main%20(28).png?raw=true)
+https://circuitverse.org/users/255105/projects/soal_uts_dasis_20234a
 
 ## 4. [CPMK07-1(4) bobot 20%]
 
