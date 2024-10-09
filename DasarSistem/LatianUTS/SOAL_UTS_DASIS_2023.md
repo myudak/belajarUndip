@@ -226,6 +226,7 @@ Truth Table
 | 1 | 1 | 0 | 1 | T      |
 | 1 | 1 | 1 | 0 | T      |
 | 1 | 1 | 1 | 1 | T      |
+
 ![](https://github.com/myudak/myudak/blob/bb267f7c6a6a4c5dd8b06f0241051d7ab070eab2/public/Screenshot%202024-10-09%20202015.png?raw=true)
 
 ## 3. [CPMK07-1(4) bobot 30%]
