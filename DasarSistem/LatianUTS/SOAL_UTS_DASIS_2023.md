@@ -236,6 +236,8 @@ Desainlah rangkaian kombinasional tersebut **dengan mengikuti langkah-langkah pe
 3. Simplify the boolean expression for each output. Use Karnaugh Maps or Boolean algebra.
 4. Draw a logic diagram that represents the simplified Boolean expression. Verify the design by analysing or simulating the circuit.
 
+---
+
 #### 1. Determine required number of inputs and outputs from the specifications.
 
 - **Input:**
@@ -247,8 +249,6 @@ Desainlah rangkaian kombinasional tersebut **dengan mengikuti langkah-langkah pe
 - **Output:**
   - 7-segment display memiliki 7 output (`a`, `b`, `c`, `d`, `e`, `f`, `g`) yang mengendalikan setiap segmen display.
   - Kita diminta untuk menyederhanakan dan mendesain logika hanya untuk output `f` (segmen horizontal tengah).
-
----
 
 #### 2. Derive the truth table for each of the outputs based on their relationships to the input.
 
@@ -316,7 +316,7 @@ Dari data input, A5 = 0.
 **Jadi, value dari Y adalah 0.**
 
 
-![](<https://github.com/myudak/myudak/blob/e29003f9e5650a36f4ecf7cb22a70e352a0533db/public/Main%20(23).png?raw=true>)
+![](<https://github.com/myudak/myudak/blob/8b646aedfa5d44a0e55b7e6e6555a4cb442d5149/public/Main%20(26).png?raw=true>)
 https://circuitverse.org/users/255105/projects/soal_uts_dasis_20234a
 
 b. dekoder 2-ke-4 dengan Enable. Jika Enable aktif dan A bernilai 0, B bernilai 1, berapakah nilai keluaran Y1 Y2 Y3 Y4 {10}
