@@ -1,3 +1,4 @@
+[github.com/myudak/belajarUndip/main/DasarSistem/LatianUTS/SOAL_UTS_DASIS_2023.md](https://github.com/myudak/belajarUndip/blob/main/DasarSistem/LatianUTS/SOAL_UTS_DASIS_2023.md)
 # UJIAN TENGAH SEMESTER DASAR SISTEM 2023/2024
 
 - Mata Kuliah : Dasar Sistem
@@ -84,11 +85,14 @@ a. Hitunglah nilai decimal, biner, octal, atau hexa decimal untuk melengkapi tab
 - 6 ÷ 2 = 3 sisa 0
 - 3 ÷ 2 = 1 sisa 1
 - 1 ÷ 2 = 0 sisa 1
+
 $$
 54_{10} = 110110_2
 $$
+
   - 0.25 × 2 = 0.5 → ambil 0
   - 0.5 × 2 = 1.0 → ambil 1
+
 $$
 0.25_{10} = 01_2
 $$
@@ -97,10 +101,12 @@ $$
  
 ### $54.25_{10} = 66.2_8$
 - 54 ÷ 8 = 6 sisa 6
+
 $$
 54_{10} = 66_8
 $$
 - 0.25 × 8 = 2.0 → ambil 2
+
 $$
 0.25_{10} = 2_8
 $$
@@ -109,10 +115,12 @@ $$
  
 ### $54.25_{10} = 36.4_{16}$
 - 54 ÷ 16 = 3 sisa 6
+
 $$
 54_{10} = 36_{16}
 $$
 - 0.25 × 16 = 4.0 → ambil 4
+
 $$ 
 0.25_{10} = 4_{16}
 $$
@@ -124,6 +132,7 @@ $$
 $$
 (1 \times 2^6) + (1 \times 2^5) + (0 \times 2^4) + (1 \times 2^3) + (0 \times 2^2) + (1 \times 2^1) + (1 \times 2^0) 
 $$
+
 $$
 = 64 + 32 + 8 + 2 + 1 = 107_{10}
 $$
@@ -251,8 +260,8 @@ Untuk segmen tengah `f`, tabel kebenaran untuk input biner (`A, B, C, D`) adalah
 |----|----|----|----|-------|------------|
 | 0  | 0  | 0  | 0  |   0   |      1     |
 | 0  | 0  | 0  | 1  |   1   |      0     |
-| 0  | 0  | 1  | 0  |   2   |      1     |
-| 0  | 0  | 1  | 1  |   3   |      1     |
+| 0  | 0  | 1  | 0  |   2   |      0     |
+| 0  | 0  | 1  | 1  |   3   |      0     |
 | 0  | 1  | 0  | 0  |   4   |      1     |
 | 0  | 1  | 0  | 1  |   5   |      1     |
 | 0  | 1  | 1  | 0  |   6   |      1     |
@@ -270,20 +279,17 @@ Untuk segmen tengah `f`, tabel kebenaran untuk input biner (`A, B, C, D`) adalah
 
 #### 3. Simplify the boolean expression for each output. Use Karnaugh Maps or Boolean algebra.
 
-S
+$$
+f(A, B, C, D) = \Sigma_{m}(0, 4,5, 6, 8,9)
+$$
+
+![](https://github.com/myudak/myudak/blob/491f66f9ed8c754427272c95e1845faea9f88ded/public/Screenshot%202024-10-09%20155822.png?raw=true)
 
 #### 4. Draw a logic diagram that represents the simplified Boolean expression. Verify the design by analysing or simulating the circuit.
 
-Menggunakan ekspresi Boolean yang disederhanakan $f = \overline{A}B + C + AD$, kita bisa menggambar diagram logika dengan menggunakan gerbang-gerbang berikut:
-
-- **Gerbang NOT** untuk $\overline{A}$
-- **Gerbang AND** untuk term $\overline{A}B$ dan $AD$
-- **Gerbang OR** untuk menggabungkan $\overline{A}B$, $C$, dan $AD$
-
-Diagram logika akan memiliki:
-
-- **Garis input:** `A`, `B`, `C`, `D`
-- **Gerbang logika:** NOT, AND, dan OR seperti yang dijelaskan.
+$$
+\overline{A}\,B\,\overline{C}\,+\,\overline{B}\,\overline{C}\,\overline{D}\,+A\,\overline{B}\,\overline{C}\,+\,\overline{A}\,B\,\overline{D}
+$$
 
 
 ## 4. [CPMK07-1(4) bobot 20%]
@@ -305,7 +311,7 @@ Select lines: 101, yang dalam binary yang sama dengan 5 dalam decimal.
 
 Dalam multiplexer 8:1, baris select yang digunakan untuk memilih satu dari 8 input data untuk menerima output Y. Baris select 101 (binary) sesuai dengan A5, sehingga nilai Y adalah A5.
 
-From the data inputs, A5 = 0.
+Dari data input, A5 = 0.
 
 **Jadi, value dari Y adalah 0.**
 
