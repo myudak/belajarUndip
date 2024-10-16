@@ -191,7 +191,12 @@ $$
 
 Tuliskan dengan jelas teorema mana yang anda pakai untuk membuktikan kedua
 Eptersi tersebut! {15}
+
+
 mager ajg
+
+
+
 $\overline{W}\,\overline{X}\,\overline{Z}\left(Y+\overline{Y}\right)+\overline{W}X\overline{Y}\left(Z+\overline{Z}\right)+\overline{W}XY\left(Z+\overline{Z}\right)+W\overline{Y}\,\overline{Z}\left(X+\overline{X}\right)$
 
 ---
