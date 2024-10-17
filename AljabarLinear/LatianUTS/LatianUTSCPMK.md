@@ -18,15 +18,16 @@ Berikut ini beberapa contoh soal yang berkaitan dengan CPMK05-1 dan Sub CPMK05-1
 ---
 
 ### **Soal 4** (C3 - Operasi vektor secara aljabar dan geometris):
-**Diberikan dua vektor \( \mathbf{v}_1 = (2, 3) \) dan \( \mathbf{v}_2 = (1, 4) \). Hitunglah:**
-a) Penjumlahan \( \mathbf{v}_1 + \mathbf{v}_2 \) secara aljabar.  
-b) Skalar \( 3 \times \mathbf{v}_1 \).  
-c) Besar sudut antara \( \mathbf{v}_1 \) dan \( \mathbf{v}_2 \). (Gunakan dot product)
+**Diberikan dua vektor 
+$\mathbf{v}_1 = (2, 3)$ dan $\mathbf{v}_2 = (1, 4)$. Hitunglah:**
+a) Penjumlahan $\mathbf{v}_1 + \mathbf{v}_2$ secara aljabar.  
+b) Skalar $3 \times \mathbf{v}_1$.  
+c) Besar sudut antara $\mathbf{v}_1$ dan $\mathbf{v}_2$. (Gunakan dot product)
 
 ---
 
 ### **Soal 5** (C3 - Operasi matriks):
-**Diberikan matriks \( A \) dan \( B \) berikut ini:**
+**Diberikan matriks $A$ dan $B$ berikut ini:**
 
 $$
 A = \begin{pmatrix} 
@@ -39,9 +40,9 @@ B = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-a) Hitunglah \( A + B \).  
-b) Hitunglah \( A \times B \).  
-c) Tentukan determinan dari matriks \( A \).
+a) Hitunglah $A + B$.  
+b) Hitunglah $A \times B$.  
+c) Tentukan determinan dari matriks $A$.
 
 ---
 
@@ -69,7 +70,7 @@ A = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-a) Gunakan OBE untuk menentukan rank dari matriks \( A \).  
+a) Gunakan OBE untuk menentukan rank dari matriks $A$.  
 b) Tunjukkan apakah matriks ini memiliki invers. Jelaskan jawabanmu.
 
 ---
