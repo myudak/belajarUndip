@@ -1,5 +1,21 @@
-Berikut ini beberapa contoh soal yang berkaitan dengan CPMK05-1 dan Sub CPMK05-1 dalam mata kuliah Aljabar Linier, sesuai dengan capaian pembelajaran:
+## Capaian Pembelajaran Lulusan (CPL)
 
+### CPL-P05:
+
+Mampu menerapkan konsep teoretis bidang ilmu komputer dalam mengidentifikasi solusi permasalahan kompleks dengan prinsip komputasi dan ilmu lain yang relevan
+
+## Capaian Pembelajaran Mata Kuliah (CPMK) dan Sub-CPMK
+
+### CPMK05-1:
+Mampu mengidentifikasi konsep teoretis bidang pengetahuan Ilmu Komputer
+
+### Sub CPMK05-1:
+
+1. Mahasiswa mampu menjelaskan (C2) mampu memahami ruang lingkup pembahasan dalam aljabar linier dan mampu menyebutkan (C2) berbagai contoh penerapan konsep aljabar linier pada berbagai bidang informatika.
+2. Mahasiswa mampu menggunakan (C3) operasi-operasi vector pada bidang dan ruang baik secara aljabar maupun geometris, operasi-operasi matriks, Operasi Baris Elementer (OBE) maupun Operasi Kolom Elementer (OKE) dan menunjukkan (C3) ekivalensi dan rank matriks, serta mampu menghitung (C3) determinan matrik persegi dan invers matriks persegi,
+3. Mahasiswa mampu menunjukkan penyelesaian sistem persamaan linier dan memberi contoh (C2) penerapkannya
+
+## Berikut ini beberapa contoh soal yang berkaitan dengan CPMK05-1 dan Sub CPMK05-1 dalam mata kuliah Aljabar Linier, sesuai dengan capaian pembelajaran:
 ---
 
 ### **Soal 1** (C2 - Memahami ruang lingkup aljabar linier):
