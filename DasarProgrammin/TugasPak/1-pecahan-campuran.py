@@ -182,8 +182,23 @@ def AddP(P1, P2):
     return MakePecahanC(
         Bilangan(P1)
         + Bilangan(P2)
-        + ((KaliNoDe(P1, P2) + KaliNoDe(P2, P1)) // KaliDenominator(P1, P2)),
-        SimpNom((KaliNoDe(P1, P2) + KaliNoDe(P2, P1)), P1, P2),
+        + (
+            (
+                (KaliNoDe(P1, P2) + KaliNoDe(P2, P1))
+                if Denominator(P1) != Denominator(P2)
+                else Nominator(P1) + Nominator(P2)
+            )
+            // KaliDenominator(P1, P2)
+        ),
+        SimpNom(
+            (
+                (KaliNoDe(P1, P2) + KaliNoDe(P2, P1))
+                if Denominator(P1) != Denominator(P2)
+                else Nominator(P1) + Nominator(P2)
+            ),
+            P1,
+            P2,
+        ),
         KaliDenominator(P1, P2),
     )
 
@@ -221,9 +236,11 @@ APLIKASI
 **************************************************************
 """
 
-print(AddP(MakePecahanC(1, 1, 2), MakePecahanC(1, 2, 4)))
-print(SubP(MakePecahanC(1, 1, 2), MakePecahanC(1, 3, 4)))
-print(DivP(MakePecahanC(1, 1, 2), MakePecahanC(-1, 1, 4)))
+print(AddP(MakePecahanC(1, 6, 9), MakePecahanC(1, 1, 9)))
+
+
+print(SubP(MakePecahanC(1, 6, 9), MakePecahanC(1, 1, 9)))
+print(DivP(MakePecahanC(1, 6, 9), MakePecahanC(1, 1, 9)))
 print(MulP(MakePecahanC(1, 1, 2), MakePecahanC(1, 1, 4)))
 print(IsEqP(MakePecahanC(1, 1, 2), MakePecahanC(1, 2, 4)))
 print(IsLtP(MakePecahanC(1, 1, 2), MakePecahanC(1, 1, 4)))

@@ -290,7 +290,7 @@ print(
 
 # PecahanCampuran
 print(
-    f"AddPecahanCampuran: <1,4,5>, <1,2,5> -> {AddPecahanCampuran(MakePecahanCampuran(1, 4, 5), MakePecahanCampuran(1, 2, 5))}",
+    f"AddPecahanCampuran: <1,6,9>, <1,1,9> -> {AddPecahanCampuran(MakePecahanCampuran(1, 6, 9), MakePecahanCampuran(1, 1, 9))}",
 )
 print(
     f"SubPecahanCampuran: <1,4,5>, <1,2,5> -> {SubPecahanCampuran(MakePecahanCampuran(1, 4, 5), MakePecahanCampuran(1, 2, 5))}",
