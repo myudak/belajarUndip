@@ -93,6 +93,42 @@ Linux penting untuk robotika karena beberapa alasan kunci, terutama yang berkait
 
 Dengan semua keuntungan ini, Linux menjadi pilihan yang ideal untuk pengembangan dan penerapan sistem robotika, terutama yang menggunakan ROS.  Kemampuannya untuk beradaptasi dengan berbagai kebutuhan, dukungan komunitas yang kuat, dan fokus pada keamanan menjadikannya platform yang handal dan efisien untuk inovasi di bidang robotika.
 
+ROS 2 (Robot Operating System 2) builds upon the foundation of ROS 1 with a focus on improved performance, reliability, and support for real-time systems and embedded platforms.  Here's a summary of key ROS 2 programming concepts and command-line tools:
+
+**Key ROS 2 Concepts:**
+
+* **Nodes:**  Fundamental building blocks of a ROS 2 system.  Nodes encapsulate computation and communication.
+* **Topics:**  Named buses used for asynchronous, many-to-many communication between nodes.  Publishers publish messages on a topic, and subscribers subscribe to a topic to receive those messages.
+* **Services:**  Used for synchronous, request-response communication between nodes.  A client sends a request to a service server, and the server processes the request and returns a response.
+* **Actions:**  Similar to services, but allow for goals to be canceled and provide feedback during execution.  Useful for long-running tasks.
+* **Parameters:**  Configuration values that can be dynamically set and retrieved by nodes.
+* **Quality of Service (QoS):**  Defines how data is delivered over the network, such as reliability, durability, and history.
+* **Launch Files:**  XML files used to describe and launch complex ROS 2 systems.
+
+**ROS 2 Command-Line Tools:**
+
+* **`ros2 run <package_name> <executable_name>`:** Launches a ROS 2 node.
+* **`ros2 node list`:** Lists running ROS 2 nodes.
+* **`ros2 node info <node_name>`:** Displays information about a specific node, such as its publishers, subscribers, services, and actions.
+* **`ros2 topic list`:** Lists available topics.
+* **`ros2 topic echo <topic_name>`:** Prints messages published on a topic to the console.
+* **`ros2 topic info <topic_name>`:** Displays information about a topic, such as its type and publishers/subscribers.
+* **`ros2 topic pub <topic_name> <message_type> <message_data>`:** Publishes a message to a topic.
+* **`ros2 service list`:** Lists available services.
+* **`ros2 service call <service_name> <service_type> <request_data>`:** Calls a service.
+* **`ros2 service info <service_name>`:** Displays information about a service.
+* **`ros2 action list`:** Lists available actions.
+* **`ros2 action send_goal <action_name> <action_type> <goal_data>`:** Sends a goal to an action server.
+* **`ros2 action info <action_name>`:** Displays information about an action.
+* **`ros2 param list`:** Lists parameters of a node.
+* **`ros2 param get <node_name> <parameter_name>`:** Gets the value of a parameter.
+* **`ros2 param set <node_name> <parameter_name> <value>`:** Sets the value of a parameter.
+* **`ros2 param dump <node_name>`:** Dumps all parameters of a node to a YAML file.
+* **`ros2 launch <package_name> <launch_file_name>`:** Launches a ROS 2 system described in a launch file.
+
+**ROS 2 Programming (C++ Example):**
+
+```cpp
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
 
