@@ -92,3 +92,13 @@ Linux penting untuk robotika karena beberapa alasan kunci, terutama yang berkait
 * **Isolasi Proses:** Linux menyediakan mekanisme isolasi proses yang kuat, yang membantu mencegah malware dan serangan siber menyebar ke seluruh sistem robot.
 
 Dengan semua keuntungan ini, Linux menjadi pilihan yang ideal untuk pengembangan dan penerapan sistem robotika, terutama yang menggunakan ROS.  Kemampuannya untuk beradaptasi dengan berbagai kebutuhan, dukungan komunitas yang kuat, dan fokus pada keamanan menjadikannya platform yang handal dan efisien untuk inovasi di bidang robotika.
+
+#include <rclcpp/rclcpp.hpp>
+#include <std_msgs/msg/string.hpp>
+
+int main(int argc, char ** argv)
+{
+  rclcpp::init(argc, argv);
+  auto node = rclcpp::Node::make_shared("my_node");
+  auto publisher = node->create_publisher<std_msgs::msg::String>("my_topic", 10);
+  auto message = std_msgs::msg::String
