@@ -1,4 +1,4 @@
-from typing import List
+import pprint
 
 """
 Deskripsi : TUGAS DASAR PEMROGRAMAN KOLEKSI OBJEK
@@ -50,65 +50,66 @@ DEFINISI DAN SPESIFIKASI KONSTRUKTOR
 """
 
 
-# PRIMITIVE LIKE TYPE
-def IsEmpty(L: List) -> bool:
+# PRIMITIVE LIKE FUNCTIONs
+def IsEmpty(L):
     """IsEmpty(L) benar jika list kosong"""
     return L == [] or L == [[]] or L == ""
 
 
-def IsOneElmt(L: List) -> bool:
+def IsOneElmt(L):
     """IsOneElmt(L) adalah benar jika list L hanya mempunyai satu elemen"""
     if IsEmpty(L):
         return False
     return Tail(L) == [] and Head(L) == []
 
 
-def Head(L: List) -> List:
+def Head(L):
     """Head(L): Menghasilkan list tanpa elemen terakhir list L, mungkin kosong"""
     return L[:-1]
 
 
-def Konso(e: int, L: List) -> List:
+def Konso(e, L):
     """Konso(e, L) menghasilkan sebuah List dari e dan L dengan e sebagai elemen pertama"""
     return [e] + L
 
 
-def SumElmt(L: List) -> int:
+def SumElmt(L):
     """SumElmt(L) menghasilkan jumlahan dari setiap elemen di dalam list L"""
     if IsEmpty(L):
         return 0
     return FirstElmt(L) + SumElmt(Tail(L))
 
 
-def FirstElmt(L: List) -> int:
+def FirstElmt(L):
     """FirstElmt(L) mengembalikan elemen pertama dari list L"""
     return L[0]
 
 
-def Tail(L: List) -> List:
+def Tail(L):
     """Tail(L): Menghasilkan list tanpa elemen pertama list L, mungkin kosong"""
     return L[1:]
 
 
-def NbElmt(L: List) -> int:
+def NbElmt(L):
     """NbElmt(L) Menghasilkan banyaknya elemen list, nol jika kosong"""
     if IsEmpty(L):
         return 0
     return 1 + NbElmt(Tail(L))
 
 
-def max2(a: int, b: int) -> int:
+def max2(a, b):
     return ((a + b) + abs(a - b)) // 2
 
 
-def MaxElmt(L: List) -> int:
+def MaxElmt(L):
+    """MaxElmt(L) mengembalikan elemen maksimum dari list L"""
     if IsOneElmt(L):
         return FirstElmt(L)
     return max2(FirstElmt(L), MaxElmt(Tail(L)))
 
 
 # TYPE MAHASISWA
-def MakeMhs(nim: str, nama: str, kelas: str, nilai: list):
+def MakeMhs(nim, nama, kelas, nilai):
     return [nim, nama, kelas, nilai]
 
 
@@ -124,15 +125,15 @@ def SelectNilaiMhs(Mhs):
     return Mhs[3]
 
 
-def HitungRataRata(nilai):
-    if IsEmpty(nilai):
+def HitungRataRataNilaiMhs(nilaiMhs):
+    if IsEmpty(nilaiMhs):
         return 0
-    return SumElmt(nilai) // NbElmt(nilai)
+    return SumElmt(nilaiMhs) // NbElmt(nilaiMhs)
 
 
 # TYPE SET OF MAHASISWA
 def SetMhs(Mhs):
-    """{SetMhs(Mhs) mengembalikan setMhs Mhs"""
+    """{SetMhs(Mhs) mengembalikan setMhs NIM harus unik"""
     if IsEmpty(Mhs):
         return []
     if IsNimMemberSetMhs(SelectNimMhs(FirstElmt(Mhs)), Tail(Mhs)):
@@ -153,7 +154,7 @@ def SetMhsLulus(SetMhs):
     """{SetMhsLulus(Mhs) mengembalikan himpunan mahasiswa yang lulus, yaitu yang memiliki nilai rata-rata lebih dari sama dengan 70"""
     if IsEmpty(SetMhs):
         return []
-    if HitungRataRata(SelectNilaiMhs(FirstElmt(SetMhs))) >= 70:
+    if HitungRataRataNilaiMhs(SelectNilaiMhs(FirstElmt(SetMhs))) >= 70:
         return Konso(FirstElmt(SetMhs), SetMhsLulus(Tail(SetMhs)))
     return SetMhsLulus(Tail(SetMhs))
 
@@ -162,7 +163,7 @@ def BanyakSetMhsLulus(SetMhs):
     """{SetMhsLulus(Mhs) mengembalikan himpunan mahasiswa yang lulus, yaitu yang memiliki nilai rata-rata lebih dari sama dengan 70"""
     if IsEmpty(SetMhs):
         return 0
-    if HitungRataRata(SelectNilaiMhs(FirstElmt(SetMhs))) >= 70:
+    if HitungRataRataNilaiMhs(SelectNilaiMhs(FirstElmt(SetMhs))) >= 70:
         return 1 + BanyakSetMhsLulus(Tail(SetMhs))
     return BanyakSetMhsLulus(Tail(SetMhs))
 
@@ -192,7 +193,7 @@ def BanyakSetMhsTidakMengerjakanKuis(SetMhs):
 def NilaiTertinggi(SetMhs):
     """{NilaiTertinggi(Mhs) mengembalikan nilai tertinggi dari SetMhs"""
     if IsEmpty(SelectNilaiMhs(FirstElmt(SetMhs))):
-        return 0
+        return NilaiTertinggi(Tail(SetMhs))
     if IsOneElmt(SetMhs):
         return MaxElmt(SelectNilaiMhs(FirstElmt(SetMhs)))
     return max2(
@@ -202,14 +203,15 @@ def NilaiTertinggi(SetMhs):
 
 def NilaiTertinggiKelas(kelas, SetMhs):
     """{NilaiTertinggiKelas(kelas, Mhs) mengembalikan nilai tertinggi dari SetMhs yang memiliki kelas kelas"""
+    if IsEmpty(SetMhs):
+        return 0
     if IsEmpty(SelectNilaiMhs(FirstElmt(SetMhs))) or kelas != SelectKelasMhs(
         FirstElmt(SetMhs)
     ):
-        return 0
-    if IsOneElmt(SetMhs):
-        return MaxElmt(SelectNilaiMhs(FirstElmt(SetMhs)))
+        return NilaiTertinggiKelas(kelas, Tail(SetMhs))
     return max2(
-        MaxElmt(SelectNilaiMhs(FirstElmt(SetMhs))), NilaiTertinggi(Tail(SetMhs))
+        MaxElmt(SelectNilaiMhs(FirstElmt(SetMhs))),
+        NilaiTertinggiKelas(kelas, Tail(SetMhs)),
     )
 
 
@@ -220,14 +222,27 @@ a. Konstruktor khusus untuk SetMhs dengan syarat saat menambahkan elemen
 mahasiswa baru harus menggunakan nim yang unik (tidak boleh sama dengan nim 
 yang sudah ada). 
 """
-print("SET MAHASISA :")
-print(
+print("SET MAHASISWA :")
+pprint.pprint(
     SetMhs(
         [
-            MakeMhs("123", "Caca", "C", [90, 80, 100]),
-            MakeMhs("234", "Andi", "C", []),
-            MakeMhs("345", "Cahya", "C", [90, 80, 100]),
-            MakeMhs("345", "Dimas", "C", [90, 80, 100]),
+            MakeMhs("001", "Ambatukam", "E", [69, 71, 77]),
+            MakeMhs("001", "Budi", "A", [88, 75, 92]),
+            MakeMhs("002", "Siti", "B", [60, 58]),
+            MakeMhs("003", "Agus", "A", []),
+            MakeMhs("004", "Rina", "C", [85, 90, 78]),
+            MakeMhs("005", "Dewi", "B", [72, 65, 80]),
+            MakeMhs("006", "Toni", "A", [50, 60, 40]),
+            MakeMhs("007", "Mira", "D", []),
+            MakeMhs("008", "Rudi", "C", [100, 95, 90]),
+            MakeMhs("009", "Linda", "D", [55, 65]),
+            MakeMhs("010", "Rahmat", "A", [95, 98, 99]),
+            MakeMhs("011", "Fahmi", "B", []),
+            MakeMhs("123", "Kemal", "A", [90, 69, 90]),
+            MakeMhs("2001", "Zaki", "E", [85, 80, 92]),
+            MakeMhs("3001", "Faris", "F", [45, 55, 60]),
+            MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
+            MakeMhs("9999", "Nina", "H", [72, 80, 88]),
         ]
     )
 )
@@ -237,16 +252,27 @@ b. Fungsi yang mengembalikan himpunan mahasiswa yang lulus, yaitu yang memiliki 
 rata-rata lebih dari sama dengan 70.
 """
 print("SET MAHASISWA LULUS :")
-print(
+pprint.pprint(
     SetMhsLulus(
         SetMhs(
             [
-                MakeMhs("123", "Caca", "C", [90, 69, 100]),
-                MakeMhs("234", "Andi", "C", []),
-                MakeMhs("345", "Cahya", "C", [90, 22, 100]),
-                MakeMhs("345", "anton", "C", [90, 80, 100]),
-                MakeMhs("69", "Aku", "C", [90, 80, 100]),
-                MakeMhs("345", "Cahya", "C", [90, 10, 100]),
+                MakeMhs("001", "Ambatukam", "E", [69, 71, 77]),
+                MakeMhs("001", "Budi", "A", [88, 75, 92]),
+                MakeMhs("002", "Siti", "B", [60, 58]),
+                MakeMhs("003", "Agus", "A", []),
+                MakeMhs("004", "Rina", "C", [85, 90, 78]),
+                MakeMhs("005", "Dewi", "B", [72, 65, 80]),
+                MakeMhs("006", "Toni", "A", [50, 60, 40]),
+                MakeMhs("007", "Mira", "D", []),
+                MakeMhs("008", "Rudi", "C", [100, 95, 90]),
+                MakeMhs("009", "Linda", "D", [55, 65]),
+                MakeMhs("010", "Rahmat", "A", [95, 98, 99]),
+                MakeMhs("011", "Fahmi", "B", []),
+                MakeMhs("123", "Kemal", "A", [90, 69, 90]),
+                MakeMhs("2001", "Zaki", "E", [85, 80, 92]),
+                MakeMhs("3001", "Faris", "F", [45, 55, 60]),
+                MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
+                MakeMhs("9999", "Nina", "H", [72, 80, 88]),
             ]
         )
     )
@@ -256,18 +282,28 @@ print(
 c. Fungsi yang mengembalikan himpunan mahasiswa yang tidak mengerjakan kuis sama 
 sekali di suatu kelas tertentu sesuai dengan nama kelas di-input-kan sebagai parameter.
 """
-print("SET MAHASISWA TIDAK MENGERJAKAN KUIS :")
+print("SET MAHASISWA TIDAK MENGERJAKAN KUIS DI KELAS A :")
 print(
     SetMhsTidakMengerjakanKuisKelas(
-        "C",
+        "A",
         SetMhs(
             [
-                MakeMhs("123", "Caca", "C", [90, 69, 100]),
-                MakeMhs("234", "Andi", "C", []),
-                MakeMhs("345", "Cahya", "C", [90, 22, 100]),
-                MakeMhs("345", "anton", "C", [90, 80, 100]),
-                MakeMhs("69", "Aku", "C", [90, 80, 100]),
-                MakeMhs("345", "Cahya", "C", [90, 10, 100]),
+                MakeMhs("001", "Budi", "A", [88, 75, 92]),
+                MakeMhs("002", "Siti", "B", [60, 58]),
+                MakeMhs("003", "Agus", "A", []),
+                MakeMhs("004", "Rina", "C", [85, 90, 78]),
+                MakeMhs("005", "Dewi", "B", [72, 65, 80]),
+                MakeMhs("006", "Toni", "A", [50, 60, 40]),
+                MakeMhs("007", "Mira", "D", []),
+                MakeMhs("008", "Rudi", "C", [100, 95, 90]),
+                MakeMhs("009", "Linda", "D", [55, 65]),
+                MakeMhs("010", "Rahmat", "A", [95, 98, 99]),
+                MakeMhs("011", "Fahmi", "B", []),
+                MakeMhs("123", "Kemal", "A", [90, 69, 90]),
+                MakeMhs("2001", "Zaki", "E", [85, 80, 92]),
+                MakeMhs("3001", "Faris", "F", [45, 55, 60]),
+                MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
+                MakeMhs("9999", "Nina", "H", [72, 80, 88]),
             ]
         ),
     )
@@ -282,12 +318,22 @@ print(
     NilaiTertinggi(
         SetMhs(
             [
-                MakeMhs("123", "Caca", "C", [90, 69, 100]),
-                MakeMhs("234", "Andi", "C", []),
-                MakeMhs("345", "Cahya", "C", [90, 22, 100]),
-                MakeMhs("345", "anton", "C", [90, 80, 100]),
-                MakeMhs("69", "Aku", "C", [90, 80, 100]),
-                MakeMhs("345", "Cahya", "C", [90, 10, 100]),
+                MakeMhs("001", "Budi", "A", [88, 75, 92]),
+                MakeMhs("002", "Siti", "B", [60, 58]),
+                MakeMhs("003", "Agus", "A", []),
+                MakeMhs("004", "Rina", "C", [85, 90, 78]),
+                MakeMhs("005", "Dewi", "B", [72, 65, 80]),
+                MakeMhs("006", "Toni", "A", [50, 60, 40]),
+                MakeMhs("007", "Mira", "D", []),
+                MakeMhs("008", "Rudi", "C", [100, 95, 90]),
+                MakeMhs("009", "Linda", "D", [55, 65]),
+                MakeMhs("010", "Rahmat", "A", [95, 98, 99]),
+                MakeMhs("011", "Fahmi", "B", []),
+                MakeMhs("123", "Kemal", "A", [90, 69, 90]),
+                MakeMhs("2001", "Zaki", "E", [85, 80, 92]),
+                MakeMhs("3001", "Faris", "F", [45, 55, 60]),
+                MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
+                MakeMhs("9999", "Nina", "H", [72, 80, 88]),
             ]
         )
     )
@@ -298,18 +344,28 @@ e. Fungsi yang mengembalikan mahasiswa yang mendapatkan nilai tertinggi dari sua
 kelas tertentu sesuai dengan nama kelas di-input-kan sebagai parameter. 
 """
 
-print("NILAI TERTINGGI DARI SEMUA KELAS :")
+print("NILAI TERTINGGI DARI KELAS B :")
 print(
     NilaiTertinggiKelas(
-        "C",
+        "B",
         SetMhs(
             [
-                MakeMhs("123", "Caca", "C", [90, 69, 90]),
-                MakeMhs("234", "Andi", "C", []),
-                MakeMhs("345", "Cahya", "C", [90, 22, 90]),
-                MakeMhs("345", "anton", "C", [90, 80, 90]),
-                MakeMhs("69", "Aku", "C", [90, 80, 90]),
-                MakeMhs("345", "TOL", "D", [90, 10, 100]),
+                MakeMhs("001", "Budi", "A", [88, 75, 92]),
+                MakeMhs("002", "Siti", "B", [60, 58]),
+                MakeMhs("003", "Agus", "A", []),
+                MakeMhs("004", "Rina", "C", [85, 90, 78]),
+                MakeMhs("005", "Dewi", "B", [72, 65, 80]),
+                MakeMhs("006", "Toni", "A", [50, 60, 40]),
+                MakeMhs("007", "Mira", "D", []),
+                MakeMhs("008", "Rudi", "C", [100, 95, 90]),
+                MakeMhs("009", "Linda", "D", [55, 65]),
+                MakeMhs("010", "Rahmat", "A", [95, 98, 99]),
+                MakeMhs("011", "Fahmi", "B", []),
+                MakeMhs("123", "Kemal", "A", [90, 69, 90]),
+                MakeMhs("2001", "Zaki", "E", [85, 80, 92]),
+                MakeMhs("3001", "Faris", "F", [45, 55, 60]),
+                MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
+                MakeMhs("9999", "Nina", "H", [72, 80, 88]),
             ]
         ),
     )
@@ -320,18 +376,27 @@ f. Fungsi yang mengembalikan banyaknya mahasiswa yang tidak mengerjakan kuis dar
 semua kelas. 
 """
 
-print("BANYAK MAHASISWA YANG TIDAK MENGERJAKAN KUIS DARI SEMUA KELAS")
+print("BANYAK MAHASISWA YANG TIDAK MENGERJAKAN KUIS DARI SEMUA KELAS :")
 print(
     BanyakSetMhsTidakMengerjakanKuis(
         SetMhs(
             [
-                MakeMhs("123", "Caca", "C", [90, 69, 90]),
-                MakeMhs("234", "Andi", "E", []),
-                MakeMhs("89", "Kemal", "L", []),
-                MakeMhs("345", "Cahya", "C", [90, 22, 90]),
-                MakeMhs("345", "anton", "C", [90, 80, 90]),
-                MakeMhs("69", "Aku", "C", [90, 80, 90]),
-                MakeMhs("345", "TOL", "D", [90, 10, 100]),
+                MakeMhs("001", "Budi", "A", [88, 75, 92]),
+                MakeMhs("002", "Siti", "B", [60, 58]),
+                MakeMhs("003", "Agus", "A", []),
+                MakeMhs("004", "Rina", "C", [85, 90, 78]),
+                MakeMhs("005", "Dewi", "B", [72, 65, 80]),
+                MakeMhs("006", "Toni", "A", [50, 60, 40]),
+                MakeMhs("007", "Mira", "D", []),
+                MakeMhs("008", "Rudi", "C", [100, 95, 90]),
+                MakeMhs("009", "Linda", "D", [55, 65]),
+                MakeMhs("010", "Rahmat", "A", [95, 98, 99]),
+                MakeMhs("011", "Fahmi", "B", []),
+                MakeMhs("123", "Kemal", "A", [90, 69, 90]),
+                MakeMhs("2001", "Zaki", "E", [85, 80, 92]),
+                MakeMhs("3001", "Faris", "F", [45, 55, 60]),
+                MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
+                MakeMhs("9999", "Nina", "H", [72, 80, 88]),
             ]
         )
     )
@@ -341,18 +406,27 @@ print(
 g. Fungsi yang mengembalikan banyaknya mahasiswa yang lulus dari semua kelas. 
 """
 
-print("BANYAK MAHASISWA YANG LULUS DARI SEMUA KELAS")
+print("BANYAK MAHASISWA YANG LULUS DARI SEMUA KELAS :")
 print(
     BanyakSetMhsLulus(
         SetMhs(
             [
-                MakeMhs("123", "Caca", "C", [90, 69, 90]),
-                MakeMhs("234", "Andi", "E", []),
-                MakeMhs("89", "Kemal", "L", []),
-                MakeMhs("345", "Cahya", "C", [90, 22, 90]),
-                MakeMhs("345", "anton", "C", [90, 80, 90]),
-                MakeMhs("69", "Aku", "C", [90, 80, 90]),
-                MakeMhs("345", "TOL", "D", [90, 10, 100]),
+                MakeMhs("001", "Budi", "A", [88, 75, 92]),
+                MakeMhs("002", "Siti", "B", [60, 58]),
+                MakeMhs("003", "Agus", "A", []),
+                MakeMhs("004", "Rina", "C", [85, 90, 78]),
+                MakeMhs("005", "Dewi", "B", [72, 65, 80]),
+                MakeMhs("006", "Toni", "A", [50, 60, 40]),
+                MakeMhs("007", "Mira", "D", []),
+                MakeMhs("008", "Rudi", "C", [100, 95, 90]),
+                MakeMhs("009", "Linda", "D", [55, 65]),
+                MakeMhs("010", "Rahmat", "A", [95, 98, 99]),
+                MakeMhs("011", "Fahmi", "B", []),
+                MakeMhs("123", "Kemal", "A", [90, 69, 90]),
+                MakeMhs("2001", "Zaki", "E", [85, 80, 92]),
+                MakeMhs("3001", "Faris", "F", [45, 55, 60]),
+                MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
+                MakeMhs("9999", "Nina", "H", [72, 80, 88]),
             ]
         )
     )

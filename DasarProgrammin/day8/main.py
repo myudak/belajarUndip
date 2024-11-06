@@ -152,16 +152,17 @@ KonsoSet: elemen,set ➜ set
 def KonsoSet(e: any, H: List) -> List:
     """KonsoSet(e,H) mengisi set H dengan elemen e sebagai elemen pertama jika e tidak ada di dalam set H"""
     if IsEmpty(H):
-        return e
-    if FirstElmt(e) == LastElmt(H):
+        return [e]
+    if IsMember(e, H):
         return H
-    return Konsi(KonsoSet(e, Head(H)), LastElmt(H))
+    return Konso(e, H)
 
 
 # APPLIKASI
-print(f"KonsoSet([2],[1,2,3,4,2]) = {KonsoSet([2],[1,2,3,4,2])}")
-print(f"KonsoSet([2],[1,2,3,4]) = {KonsoSet([2],[1,2,3,4])}")
-print(f"KonsoSet([2],[1,3,4]) = {KonsoSet([2],[1,3,4])}")
+print(f"KonsoSet([2],[1,2,3,4,2]) = {KonsoSet(2,[1,2,3,4,2])}")
+print(f"KonsoSet([2],[1,2,3,4]) = {KonsoSet(2,[1,2,3,4])}")
+print(f"KonsoSet([2],[1,3,4]) = {KonsoSet(2,[1,3,4])}")
+print(f"KonsoSet(2,[]) = {KonsoSet(2,[])}")
 
 """
 5. Buatlah realisasi fungsi IsSet(L). 
