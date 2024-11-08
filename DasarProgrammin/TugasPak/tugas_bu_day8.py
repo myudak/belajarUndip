@@ -1,4 +1,4 @@
-import pprint
+from pprint import pprint
 
 """
 Deskripsi : TUGAS DASAR PEMROGRAMAN KOLEKSI OBJEK
@@ -195,9 +195,10 @@ def NilaiTertinggi(SetMhs):
     if IsEmpty(SelectNilaiMhs(FirstElmt(SetMhs))):
         return NilaiTertinggi(Tail(SetMhs))
     if IsOneElmt(SetMhs):
-        return MaxElmt(SelectNilaiMhs(FirstElmt(SetMhs)))
+        return HitungRataRataNilaiMhs(SelectNilaiMhs(FirstElmt(SetMhs)))
     return max2(
-        MaxElmt(SelectNilaiMhs(FirstElmt(SetMhs))), NilaiTertinggi(Tail(SetMhs))
+        HitungRataRataNilaiMhs(SelectNilaiMhs(FirstElmt(SetMhs))),
+        NilaiTertinggi(Tail(SetMhs)),
     )
 
 
@@ -205,14 +206,32 @@ def NilaiTertinggiKelas(kelas, SetMhs):
     """{NilaiTertinggiKelas(kelas, Mhs) mengembalikan nilai tertinggi dari SetMhs yang memiliki kelas kelas"""
     if IsEmpty(SetMhs):
         return 0
-    if IsEmpty(SelectNilaiMhs(FirstElmt(SetMhs))) or kelas != SelectKelasMhs(
+    if IsEmpty(SelectNilaiMhs(FirstElmt(SetMhs))) or not kelas == SelectKelasMhs(
         FirstElmt(SetMhs)
     ):
         return NilaiTertinggiKelas(kelas, Tail(SetMhs))
     return max2(
-        MaxElmt(SelectNilaiMhs(FirstElmt(SetMhs))),
+        HitungRataRataNilaiMhs(SelectNilaiMhs(FirstElmt(SetMhs))),
         NilaiTertinggiKelas(kelas, Tail(SetMhs)),
     )
+
+
+def MhsNilaiTertinggiKelas(kelas, SetMhs, MaxNilai):
+    if IsEmpty(SetMhs):
+        return []
+    if IsEmpty(SelectNilaiMhs(FirstElmt(SetMhs))):
+        return MhsNilaiTertinggiKelas(kelas, Tail(SetMhs), MaxNilai)
+    if kelas == SelectKelasMhs(
+        FirstElmt(SetMhs)
+    ) and MaxNilai == HitungRataRataNilaiMhs(SelectNilaiMhs(FirstElmt(SetMhs))):
+        return Konso(
+            FirstElmt(SetMhs), MhsNilaiTertinggiKelas(kelas, Tail(SetMhs), MaxNilai)
+        )
+    return MhsNilaiTertinggiKelas(kelas, Tail(SetMhs), MaxNilai)
+
+
+def NilaiMahasiswaTertinggiKelas(Kelas, SetMhs):
+    return MhsNilaiTertinggiKelas(Kelas, SetMhs, NilaiTertinggiKelas(Kelas, SetMhs))
 
 
 # APPLIKASI
@@ -223,10 +242,9 @@ mahasiswa baru harus menggunakan nim yang unik (tidak boleh sama dengan nim
 yang sudah ada). 
 """
 print("SET MAHASISWA :")
-pprint.pprint(
+pprint(
     SetMhs(
         [
-            MakeMhs("001", "Ambatukam", "E", [69, 71, 77]),
             MakeMhs("001", "Budi", "A", [88, 75, 92]),
             MakeMhs("002", "Siti", "B", [60, 58]),
             MakeMhs("003", "Agus", "A", []),
@@ -243,6 +261,7 @@ pprint.pprint(
             MakeMhs("3001", "Faris", "F", [45, 55, 60]),
             MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
             MakeMhs("9999", "Nina", "H", [72, 80, 88]),
+            MakeMhs("69", "Ambasing", "C", [69, 42, 100]),
         ]
     )
 )
@@ -252,11 +271,10 @@ b. Fungsi yang mengembalikan himpunan mahasiswa yang lulus, yaitu yang memiliki 
 rata-rata lebih dari sama dengan 70.
 """
 print("SET MAHASISWA LULUS :")
-pprint.pprint(
+pprint(
     SetMhsLulus(
         SetMhs(
             [
-                MakeMhs("001", "Ambatukam", "E", [69, 71, 77]),
                 MakeMhs("001", "Budi", "A", [88, 75, 92]),
                 MakeMhs("002", "Siti", "B", [60, 58]),
                 MakeMhs("003", "Agus", "A", []),
@@ -273,6 +291,7 @@ pprint.pprint(
                 MakeMhs("3001", "Faris", "F", [45, 55, 60]),
                 MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
                 MakeMhs("9999", "Nina", "H", [72, 80, 88]),
+                MakeMhs("69", "Ambasing", "C", [69, 42, 100]),
             ]
         )
     )
@@ -344,10 +363,10 @@ e. Fungsi yang mengembalikan mahasiswa yang mendapatkan nilai tertinggi dari sua
 kelas tertentu sesuai dengan nama kelas di-input-kan sebagai parameter. 
 """
 
-print("NILAI TERTINGGI DARI KELAS B :")
+print("MAHASISWA NILAI TERTINGGI DARI KELAS C :")
 print(
-    NilaiTertinggiKelas(
-        "B",
+    NilaiMahasiswaTertinggiKelas(
+        "C",
         SetMhs(
             [
                 MakeMhs("001", "Budi", "A", [88, 75, 92]),
@@ -366,6 +385,7 @@ print(
                 MakeMhs("3001", "Faris", "F", [45, 55, 60]),
                 MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
                 MakeMhs("9999", "Nina", "H", [72, 80, 88]),
+                MakeMhs("69", "Ambasing", "C", [90, 100, 95]),
             ]
         ),
     )
@@ -377,7 +397,7 @@ semua kelas.
 """
 
 print("BANYAK MAHASISWA YANG TIDAK MENGERJAKAN KUIS DARI SEMUA KELAS :")
-print(
+pprint(
     BanyakSetMhsTidakMengerjakanKuis(
         SetMhs(
             [
@@ -397,8 +417,9 @@ print(
                 MakeMhs("3001", "Faris", "F", [45, 55, 60]),
                 MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
                 MakeMhs("9999", "Nina", "H", [72, 80, 88]),
+                MakeMhs("69", "Ambasing", "C", [69, 42, 100]),
             ]
-        )
+        ),
     )
 )
 
@@ -427,7 +448,8 @@ print(
                 MakeMhs("3001", "Faris", "F", [45, 55, 60]),
                 MakeMhs("5001", "Alvin", "G", [92, 94, 96]),
                 MakeMhs("9999", "Nina", "H", [72, 80, 88]),
+                MakeMhs("69", "Ambasing", "C", [69, 42, 100]),
             ]
-        )
+        ),
     )
 )
