@@ -2,8 +2,11 @@ from pprint import pprint
 
 """
 Deskripsi : TUGAS DASAR PEMROGRAMAN KOLEKSI OBJEK
-Pembuat   : Muchammad Yuda Tri Ananda
-NIM       : 24060124110142
+Pembuat   : 1. Muchammad Yuda Tri  (24060124110142)
+            2. Olivia Oktaviani (24060124120050)
+            3. Nayla Husna (24060124140158)
+            4. Muhammad Nauval Fadli (24060124120027)
+            5. Novelya Cherina (24060124140174)
 Tanggal   : 5 November 2024 
 """
 
