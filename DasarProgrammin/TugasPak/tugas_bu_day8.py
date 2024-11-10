@@ -7,7 +7,6 @@ Pembuat   : 1. Muchammad Yuda Tri  (24060124110142)
             3. Nayla Husna (24060124140158)
             4. Muhammad Nauval Fadli (24060124120027)
             5. Novelya Cherina (24060124140174)
-Tanggal   : 5 November 2024 
 """
 
 """
@@ -120,6 +119,10 @@ def SelectNimMhs(Mhs):
     return Mhs[0]
 
 
+def SelectNamaMhs(Mhs):
+    return Mhs[1]
+
+
 def SelectKelasMhs(Mhs):
     return Mhs[2]
 
@@ -135,13 +138,13 @@ def HitungRataRataNilaiMhs(nilaiMhs):
 
 
 # TYPE SET OF MAHASISWA
-def SetMhs(Mhs):
+def MakeSetMhs(Mhs):
     """{SetMhs(Mhs) mengembalikan setMhs NIM harus unik"""
     if IsEmpty(Mhs):
         return []
     if IsNimMemberSetMhs(SelectNimMhs(FirstElmt(Mhs)), Tail(Mhs)):
-        return SetMhs(Tail(Mhs))
-    return Konso(FirstElmt(Mhs), SetMhs(Tail(Mhs)))
+        return MakeSetMhs(Tail(Mhs))
+    return Konso(FirstElmt(Mhs), MakeSetMhs(Tail(Mhs)))
 
 
 def IsNimMemberSetMhs(nim, SetMhs):
@@ -246,7 +249,7 @@ yang sudah ada).
 """
 print("SET MAHASISWA :")
 pprint(
-    SetMhs(
+    MakeSetMhs(
         [
             MakeMhs("001", "Budi", "A", [88, 75, 92]),
             MakeMhs("002", "Siti", "B", [60, 58]),
@@ -276,7 +279,7 @@ rata-rata lebih dari sama dengan 70.
 print("SET MAHASISWA LULUS :")
 pprint(
     SetMhsLulus(
-        SetMhs(
+        MakeSetMhs(
             [
                 MakeMhs("001", "Budi", "A", [88, 75, 92]),
                 MakeMhs("002", "Siti", "B", [60, 58]),
@@ -308,7 +311,7 @@ print("SET MAHASISWA TIDAK MENGERJAKAN KUIS DI KELAS A :")
 print(
     SetMhsTidakMengerjakanKuisKelas(
         "A",
-        SetMhs(
+        MakeSetMhs(
             [
                 MakeMhs("001", "Budi", "A", [88, 75, 92]),
                 MakeMhs("002", "Siti", "B", [60, 58]),
@@ -338,7 +341,7 @@ d. Fungsi yang mengembalikan nilai tertinggi dari semua kelas.
 print("NILAI TERTINGGI DARI SEMUA KELAS :")
 print(
     NilaiTertinggi(
-        SetMhs(
+        MakeSetMhs(
             [
                 MakeMhs("001", "Budi", "A", [88, 75, 92]),
                 MakeMhs("002", "Siti", "B", [60, 58]),
@@ -370,7 +373,7 @@ print("MAHASISWA NILAI TERTINGGI DARI KELAS C :")
 print(
     NilaiMahasiswaTertinggiKelas(
         "C",
-        SetMhs(
+        MakeSetMhs(
             [
                 MakeMhs("001", "Budi", "A", [88, 75, 92]),
                 MakeMhs("002", "Siti", "B", [60, 58]),
@@ -402,7 +405,7 @@ semua kelas.
 print("BANYAK MAHASISWA YANG TIDAK MENGERJAKAN KUIS DARI SEMUA KELAS :")
 pprint(
     BanyakSetMhsTidakMengerjakanKuis(
-        SetMhs(
+        MakeSetMhs(
             [
                 MakeMhs("001", "Budi", "A", [88, 75, 92]),
                 MakeMhs("002", "Siti", "B", [60, 58]),
@@ -433,7 +436,7 @@ g. Fungsi yang mengembalikan banyaknya mahasiswa yang lulus dari semua kelas.
 print("BANYAK MAHASISWA YANG LULUS DARI SEMUA KELAS :")
 print(
     BanyakSetMhsLulus(
-        SetMhs(
+        MakeSetMhs(
             [
                 MakeMhs("001", "Budi", "A", [88, 75, 92]),
                 MakeMhs("002", "Siti", "B", [60, 58]),
