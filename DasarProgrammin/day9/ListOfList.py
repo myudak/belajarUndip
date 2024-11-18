@@ -5,15 +5,14 @@ NIM       : 24060124110142
 Tanggal   : 19 November 2024 
 """
 
-from list import *
-from set import *
+from tugasRekursif import IsEqual, max2, IsOneElmt, NbElmt
 
 # KONSTRUKTOR
 
 """
 DEFINISI DAN SPESIFIKASI
-KonsLo(e, L): elemen, List of List --> List of List
-KonsLo(e, L) Menambahkan elemen di baris awal List of List
+    KonsLo(e, L): elemen, List of List --> List of List
+    KonsLo(e, L) Menambahkan elemen di baris awal List of List
 """
 
 
@@ -23,8 +22,8 @@ def KonsLo(e, L):
 
 """
 DEFINISI DAN SPESIFIKASI
-KonsLi(L, e): List of List, elemen --> List of List
-KonsLi(L, e) Menambahkan elemen di baris akhir List of List
+    KonsLi(L, e): List of List, elemen --> List of List
+    KonsLi(L, e) Menambahkan elemen di baris akhir List of List
 """
 
 
@@ -36,8 +35,8 @@ def KonsLi(L, e):
 
 """
 DEFINISI DAN SPESIFIKASI
-FirstList(L): List of List --> elemen
-FirstList(L) Menampilkan elemen pertama dari List of List
+    FirstList(L): List of List --> elemen
+    FirstList(L) Menampilkan elemen pertama dari List of List
 """
 
 
@@ -47,8 +46,8 @@ def FirstList(L):
 
 """
 DEFINISI DAN SPESIFIKASI
-LastList(L): List of List --> elemen
-LastList(L) Menampilkan elemen terakhir dari List of List
+    LastList(L): List of List --> elemen
+    LastList(L) Menampilkan elemen terakhir dari List of List
 """
 
 
@@ -58,8 +57,8 @@ def LastList(L):
 
 """
 DEFINISI DAN SPESIFIKASI
-HeadList(L): List of List --> List of List
-HeadList(L) List of List dengan menghilangkan elemen terakhirnya
+    HeadList(L): List of List --> List of List
+    HeadList(L) List of List dengan menghilangkan elemen terakhirnya
 """
 
 
@@ -69,8 +68,8 @@ def HeadList(L):
 
 """
 DEFINISI DAN SPESIFIKASI
-TailList(L): List of List --> List of List
-TailList(L) List of List dengan menghilangkan elemen pertamanya
+    TailList(L): List of List --> List of List
+    TailList(L) List of List dengan menghilangkan elemen pertamanya
 """
 
 
@@ -82,8 +81,8 @@ def TailList(L):
 
 """
 DEFINISI DAN SPESIFIKASI
-isEmpty(L): List of List --> boolean
-isEmpty(L) mengecek apakah List of List kosong
+    isEmpty(L): List of List --> boolean
+    isEmpty(L) mengecek apakah List of List kosong
 """
 
 
@@ -93,8 +92,8 @@ def IsEmpty(L):
 
 """
 DEFINISI DAN SPESIFIKASI
-IsAtom: List of List --> boolean
-IsAtom Cek apakah S adalah atom atau bukan sebuah list
+    IsAtom: List of List --> boolean
+    IsAtom Cek apakah S adalah atom atau bukan sebuah list
 """
 
 
@@ -104,8 +103,8 @@ def IsAtom(S):
 
 """
 DEFINISI DAN SPESIFIKASI
-IsList: List of List --> boolean
-IsList Cek apakah S adalah List
+    IsList: List of List --> boolean
+    IsList Cek apakah S adalah List
 """
 
 
@@ -119,7 +118,6 @@ def IsList(S):
 DEFINISI DAN SPESIFIKASI
     IsList: 2 List of List --> boolean
     IsList Cek apakah S adalah List
-Realisasi dalam Python
 """
 
 
@@ -134,14 +132,13 @@ def IsMemberLS(L, S):
 
 
 # APLIKASI
-print(IsMemberLS([3, 1], [1, 2, [3, 1]]))
-print(IsMemberLS([1], [1, 2, 3, [4, 5]]))
+print(f"IsMemberLS([3, 1], [1, 2, [3, 1]]) = {IsMemberLS([3, 1], [1, 2, [3, 1]])}")
+print(f"IsMemberLS([1], [1, 2, 3, [4, 5]]) = {IsMemberLS([1], [1, 2, 3, [4, 5]])}")
 
 """
 DEFINISI DAN SPESIFIKASI
     IsList: 2 List of List --> boolean
     IsList Cek apakah S adalah List
-Realisasi dalam Python
 """
 
 
@@ -162,14 +159,17 @@ def IsEqS(S1, S2):
 
 
 # APLIKASI
-print(IsEqS([[1, 2], 3, 4, 5], [[1, 2], 3, 4, 5]))
-print(IsEqS([[1, 2], 3, 4, 5], [[1], 3, 4, 5]))
+print(
+    f"IsEqS([[1, 2], 3, 4, 5], [[1, 2], 3, 4, 5]) = {IsEqS([[1, 2], 3, 4, 5], [[1, 2], 3, 4, 5])}"
+)
+print(
+    f"IsEqS([[1, 2], 3, 4, 5], [[1], 3, 4, 5]) = {IsEqS([[1, 2], 3, 4, 5], [[1], 3, 4, 5])}"
+)
 
 """
 DEFINISI DAN SPESIFIKASI
     IsMemberS: elemen, list of list-> boolean
     IsMemberS(x,S) mengembalikan true jika elemen x ada di dalam list of list S
-Realisasi dalam Python
 """
 
 
@@ -185,9 +185,9 @@ def IsMemberS(x, S):
 
 
 # APLIKASI
-print(IsMemberS(3, []))
-print(IsMemberS(3, [2, 4, 3, [1], [4, 5]]))
-print(IsMemberS(3, [2, 4, 7, [1], [3, 5]]))
+print(f"IsMemberS(3, []) = {IsMemberS(3, [])}")
+print(f"IsMemberS(3, [2, 4, 3, [1], [4, 5]]) = {IsMemberS(3, [2, 4, 3, [1], [4, 5]])}")
+print(f"IsMemberS(3, [2, 4, 7, [1], [3, 5]]) = {IsMemberS(3, [2, 4, 7, [1], [3, 5]])}")
 
 # OPERASI/FUNGSI LOL
 
@@ -195,7 +195,6 @@ print(IsMemberS(3, [2, 4, 7, [1], [3, 5]]))
 DEFINISI DAN SPESIFIKASI
 Rember: elemen, list of list -> list of list
 Rember(x,S) menghapus semua elemen x yang ada di list of list S
-Realisasi dalam Python
 """
 
 
@@ -213,15 +212,14 @@ def Rember(x, S):
 
 
 # APLIKASI
-print(Rember(3, []))
-print(Rember(3, [4, 3, [2, 4], 3]))
-print(Rember(3, [2, 4, [3, 6, 9], 5, 3]))
+print(f"Rember(3, []) = {Rember(3, [])}")
+print(f"Rember(3, [4, 3, [2, 4], 3]) = {Rember(3, [4, 3, [2, 4], 3])}")
+print(f"Rember(3, [2, 4, [3, 6, 9], 5, 3]) = {Rember(3, [2, 4, [3, 6, 9], 5, 3])}")
 
 """
 DEFINISI DAN SPESIFIKASI
 Max: list of list -> elemen
 Max(S) mengembalikan elemen maksimum di dalam list of list S
-Realisasi dalam Python
 """
 
 
@@ -236,14 +234,17 @@ def Max(S):
 
 
 # APLIKASI
-print(Max([4, 5, 6, [8, 9, 10], [12, 0], 8]))
-print(Max([4, 15, 6, [8, 9, 10], [12, 0], 8]))
+print(
+    f"Max([4, 5, 6, [8, 9, 10], [12, 0], 8]) = {Max([4, 5, 6, [8, 9, 10], [12, 0], 8])}"
+)
+print(
+    f"Max([4, 15, 6, [8, 9, 10], [12, 0], 8]) = {Max([4, 15, 6, [8, 9, 10], [12, 0], 8])}"
+)
 
 """
 DEFINISI DAN SPESIFIKASI
     NBElmtAtom: list of list -> integer
     NBElmtAtom(S) mengembalikan banyaknya elemen list of list S yang berupa atom
-Realisasi dalam Python
 """
 
 
@@ -257,15 +258,18 @@ def NBElmtAtom(S):
 
 
 # APLIKASI
-print(NBElmtAtom([4, 5, 6, [8, 9, 10], [12, 0], 8]))
-print(NBElmtAtom([4, 15, 6, [8, 9], 10, [12], 8]))
-print(NBElmtAtom([[8, 9, 10]]))
+print(
+    f"NBElmtAtom([4, 5, 6, [8, 9, 10], [12, 0], 8]) = {NBElmtAtom([4, 5, 6, [8, 9, 10], [12, 0], 8])}"
+)
+print(
+    f"NBElmtAtom([4, 15, 6, [8, 9], 10, [12], 8]) = {NBElmtAtom([4, 15, 6, [8, 9], 10, [12], 8])}"
+)
+print(f"NBElmtAtom([[8, 9, 10]]) = {NBElmtAtom([[8, 9, 10]])}")
 
 """
 DEFINISI DAN SPESIFIKASI
 NBElmtList: list of list -> integer
 NBElmtList(S) mengembalikan banyaknya elemen list of list S yang berupa list
-Realisasi dalam Python
 """
 
 
@@ -279,15 +283,18 @@ def NBElmtList(S):
 
 
 # APLIKASI
-print(NBElmtList([4, 5, 6, [8, 9, 10], [12, 0], 8]))
-print(NBElmtList([[4, 15], 6, [8, 9], 10, [12], 8]))
-print(NBElmtList([[8, 9, 10]]))
+print(
+    f"NBElmtList([4, 5, 6, [8, 9, 10], [12, 0], 8]) = {NBElmtList([4, 5, 6, [8, 9, 10], [12, 0], 8])}"
+)
+print(
+    f"NBElmtList([[4, 15], 6, [8, 9], 10, [12], 8]) = {NBElmtList([[4, 15], 6, [8, 9], 10, [12], 8])}"
+)
+print(f"NBElmtList([[8, 9, 10]]) = {NBElmtList([[8, 9, 10]])}")
 
 """
 DEFINISI DAN SPESIFIKASI
-SumLoL: list of list -> integer
-SumLoL(S) mengembalikan jumlah semua elemen dalam list of list S
-Realisasi dalam Python
+    SumLoL: list of list -> integer
+    SumLoL(S) mengembalikan jumlah semua elemen dalam list of list S
 """
 
 
@@ -303,15 +310,14 @@ def SumLoL(S):
 
 
 # APLIKASI
-print(SumLoL([[]]))
-print(SumLoL([4, 5, 6, [2, 3, 1]]))
-print(SumLoL([[2, 3, 4]]))
+print(f"SumLoL([[]]) = {SumLoL([[]])}")
+print(f"SumLoL([4, 5, 6, [2, 3, 1]]) = {SumLoL([4, 5, 6, [2, 3, 1]])}")
+print(f"SumLoL([[2, 3, 4]]) = {SumLoL([[2, 3, 4]])}")
 
 """
 DEFINISI DAN SPESIFIKASI
 MaxNBElmtList: list of list -> integer
 MaxNBElmtList(S) mengembalikan banyaknya elemen list maksimum yang ada pada list of list S
-Realisasi dalam Python
 """
 
 
@@ -324,17 +330,21 @@ def MaxNBElmtList(S):
         return max2(NbElmt(FirstList(S)), MaxNBElmtList(TailList(S)))
 
 
-print(MaxNBElmtList([[4, 5, 6, 7], [8, 9, 10], [12, 0], 8]))
-print(MaxNBElmtList([[4, 15], 6, [8, 9], 10, [12], 8]))
-print(MaxNBElmtList([8, 9, 10]))
+# APPLIKASI
+print(
+    f"MaxNBElmtList([[4, 5, 6, 7], [8, 9, 10], [12, 0], 8]) = {MaxNBElmtList([[4, 5, 6, 7], [8, 9, 10], [12, 0], 8])}"
+)
+print(
+    f"MaxNBElmtList([[4, 15], 6, [8, 9], 10, [12], 8]) = {MaxNBElmtList([[4, 15], 6, [8, 9], 10, [12], 8])}"
+)
+print(f"MaxNBElmtList([8, 9, 10]) = {MaxNBElmtList([8, 9, 10])}")
 
 """
 DEFINISI DAN SPESIFIKASI
-MaxSumElmt: list of list -> integer
-MaxSumElmt(S) mengembalikan elemen maksimum pada list of list S
-jika elemen berupa list, maka dihitung jumlahan elemen dalam list tersebut5
-jika elemen atom, maka nilainya adalah elemen tersebut
-Realisasi dalam Python
+    MaxSumElmt: list of list -> integer
+    MaxSumElmt(S) mengembalikan elemen maksimum pada list of list S
+    jika elemen berupa list, maka dihitung jumlahan elemen dalam list tersebut5
+    jika elemen atom, maka nilainya adalah elemen tersebut
 """
 
 
@@ -348,7 +358,11 @@ def MaxSumElmt(S):
 
 
 # APLIKASI
-print(MaxSumElmt([[1, 2], 9, [4, 5, 6], 8]))
-print(MaxSumElmt([[1, 2], 90, [4, 5, 6], 8]))
-print(MaxSumElmt([8, 9, 10]))
-print(MaxSumElmt([[8, 9, 10]]))
+print(
+    f"MaxSumElmt([[1, 2], 9, [4, 5, 6], 8]) = {MaxSumElmt([[1, 2], 9, [4, 5, 6], 8])}"
+)
+print(
+    f"MaxSumElmt([[1, 2], 90, [4, 5, 6], 8]) = {MaxSumElmt([[1, 2], 90, [4, 5, 6], 8])}"
+)
+print(f"MaxSumElmt([8, 9, 10]) = {MaxSumElmt([8, 9, 10])}")
+print(f"MaxSumElmt([[8, 9, 10]]) = {MaxSumElmt([[8, 9, 10]])}")

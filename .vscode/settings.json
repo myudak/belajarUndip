@@ -2,6 +2,11 @@
     "files.associations": {
         "iostream": "cpp"
     },
-    "python.analysis.typeCheckingMode": "basic",
-    "python.analysis.autoImportCompletions": true
+    // "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    
+        "python.analysis.typeCheckingMode": "off",
+        "mypy-type-checker.ignorePatterns": ["**/*.py"]
+    
+      
 }
