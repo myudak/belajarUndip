@@ -17,18 +17,12 @@ int main()
 
     /*Algoritma*/
     if (i < 0)
-    {
         printf("Angka ini negatif");
-        return 0;
-    }
 
-    if (i > 0)
-    {
+    else if (i > 0)
         printf("Angka ini positif");
-        return 0;
-    }
 
-    printf("Angka ini bernilai 0");
-
+    else
+        printf("Angka ini bernilai 0");
     return 0;
 }
