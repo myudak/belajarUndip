@@ -95,6 +95,12 @@ ElmtType ValMax(TabInt T);
 /* Pre Condition : Tabel tidak kosong.    ElmtType ValMin(TabInt T); 
 /* Mengirimkan nilai minimum TabInt T.                         */ 
 /* Pre Condition : Tabel tidak kosong.                         */ 
+
+ElmtType ValMin(TabInt T); 
+/* Mengirimkan nilai maksimum TabInt T.                        */ 
+/* Pre Condition : Tabel tidak kosong.    ElmtType ValMin(TabInt T); 
+/* Mengirimkan nilai minimum TabInt T.                         */ 
+/* Pre Condition : Tabel tidak kosong.                         */ 
  
 /***************************************************************/ 
 /*                                                             */ 
