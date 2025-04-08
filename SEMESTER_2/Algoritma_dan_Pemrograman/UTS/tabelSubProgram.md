@@ -1,11 +1,4 @@
-# PENGERTIAN 
 
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
-![alt text](image-4.png)
-![alt text](image-5.png)
-![alt text](image-6.png)
 
 # SOAL LATIHAN ALGORITMA DAN PEMROGRAMAN (Bagian materi Tabel)
 
@@ -479,3 +472,81 @@ Function IsSimetris(TabInt T)  Boolean
             output(false)
     output(true)
 ```
+
+
+# PENGERTIAN 
+
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
+![alt text](image-6.png)
+
+
+## Algoritmik ke Bahasa C (1)
+
+| No. | Notasi Algoritmik                    | Bahasa C                         |
+| :-- | :----------------------------------- | :------------------------------- |
+| 1.  | **ASSIGNMENT**<br>`<nama> <- <nilai>` | `<nama> = <nilai>;`              |
+| 2.  | **KONDISIONAL**<br>`if <kondisi> then`<br>`  AKSI_1` | `if (kondisi) {`<br>`  AKSI_1;`<br>`}` |
+|     | `if <kondisi> then`<br>`  AKSI_1`<br>`else`<br>`  AKSI_2` | `if (kondisi) {`<br>`  AKSI_1;`<br>`} else {`<br>`  AKSI_2;`<br>`}` |
+
+---
+
+## Algoritmik ke Bahasa C (2)
+
+| No. | Notasi Algoritmik                     | Bahasa C                          |
+| :-- | :------------------------------------ | :-------------------------------- |
+|     | `depend on <nama>`<br>`  kondisi_1 : AKSI_1`<br>`  kondisi_2 : AKSI_2`<br>`  kondisi_3 : AKSI_3`<br>`  .`<br>`  .`<br>`  .`<br>`  kondisi_N : AKSI_N` | `if (kondisi_1) {`<br>`  AKSI_1;`<br>`} else if (kondisi_2) {`<br>`  AKSI_2;`<br>`} else if (kondisi_3) {`<br>`  AKSI_3;`<br>`}`<br>`.`<br>`.`<br>`.`<br>`else {`<br>`  AKSI_N;`<br>`}` |
+
+---
+
+## Algoritmik ke Bahasa C (3)
+
+*   Untuk `depend on`, jika `<kondisi_1>` ... `<kondisi_N>` berbentuk :
+    `<nama_Var> = <ekspresi konstan>`, maka dapat dipakai statement `switch` :
+
+```c
+switch (nama_Var) {
+  case eksp_konstan_1 : AKSI_1; break;
+  case eksp_konstan_2 : AKSI_2; break;
+  case eksp_konstan_3 : AKSI_3; break;
+  .
+  .
+  .
+  case eksp_konstan_N : AKSI_N; break;
+}
+```
+
+---
+
+## Algoritmik ke Bahasa C (4)
+
+| No. | Notasi Algoritmik                       | Bahasa C                             |
+| :-- | :-------------------------------------- | :----------------------------------- |
+| 3.  | **PENGULANGAN**<br>`while <kondisiUlang> do`<br>`  AKSI` | `while (kondisiUlang) {`<br>`  AKSI;`<br>`}` |
+|     | `repeat`<br>`  AKSI`<br>`until <kondisiStop>` | `do {`<br>`  AKSI;`<br>`} while (!kondisiStop);` |
+|     | `iterate`<br>`  AKSI_1`<br>`stop <kondisiStop>`<br>`  AKSI_2` | `for(;;) {`<br>`  AKSI_1;`<br>`  if (kondisiStop) {`<br>`    break; /* Ann.: 'exit' di slide mungkin berarti keluar loop, yaitu 'break' */`<br>`  } else {`<br>`    AKSI_2;`<br>`  }`<br>`}` |
+
+---
+
+## Algoritmik ke Bahasa C (5)
+
+| No. | Notasi Algoritmik             | Bahasa C                                   |
+| :-- | :---------------------------- | :----------------------------------------- |
+|     | `i traversal [Awal..Akhir]`<br>`  AKSI` | `/*jika Awal <= Akhir*/`<br>`for(i=Awal; i<=Akhir; i++) {`<br>`  AKSI;`<br>`}` |
+|     | *(Implied: Traversal Mundur)* | `/*jika Awal >= Akhir*/`<br>`for(i=Awal; i>=Akhir; i--) {`<br>`  AKSI;`<br>`}` |
+
+---
+
+*(Catatan: Slide "Algoritmik ke Bahasa C (6)" tidak ada dalam gambar yang diberikan).*
+
+---
+
+## Algoritmik ke Bahasa C (7)
+
+| No. | Notasi Algoritmik                         | Bahasa C                              |
+| :-- | :---------------------------------------- | :------------------------------------ |
+| 5.  | **Type Bentukan**<br>`type namaType : <`<br>`  elemen1 : type1,`<br>`  elemen2 : type2,`<br>`  elemen3 : type3,`<br>`  ...`<br>`  elemenN : typeN`<br>`>` | `typedef struct {`<br>`  type1 elemen1;`<br>`  type2 elemen2;`<br>`  type3 elemen3;`<br>`  ...`<br>`  typeN elemenN;`<br>`} namaType;` |
+|     | `type satuElemen : typeSatu`              | `typedef typeSatu satuElemen;`        |
