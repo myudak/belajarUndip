@@ -6,7 +6,7 @@ NAMA  : Muchammad Yuda Tri Ananda
 NIM   : 24060124110142
 TUGAS :
 -----
-3. penjualan (kota) tertinggi pada bulan x
+3. Penjualan (kota) tertinggi pada bulan x
 
 Tabel Penjualan:
 ----------------
@@ -22,20 +22,19 @@ Contoh Output: Saat: Feb penjualan tertinggi pada kota: Jakarta (25)
 
 int main()
 {
-    char input_bulan[3];
-    char kota[3][20] = {"Semarang", "Jakarta", "Yogyakarta"};
+    char input_bulan[10];
     char bulan[4][10] = {"Jan", "Feb", "Mar", "Apr"};
+    char kota[3][10] = {"Semarang", "Jakarta", "Yogyakarta"};
     int sales[3][4] = {
         {10, 15, 10, 5},
         {20, 25, 20, 15},
         {10, 5, 14, 3}};
 
-    printf("Masukkan nama bulan: ");
+    printf("Masukkan nama bulan (Jan/Feb/Mar/Apr): ");
     scanf("%s", input_bulan);
 
     int index_bulan = -1;
-
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 4; i++)
     {
         if (strcmp(input_bulan, bulan[i]) == 0)
         {
@@ -46,22 +45,22 @@ int main()
 
     if (index_bulan == -1)
     {
-        printf("Bulan gak ada");
+        printf("Bulan gk ada");
         return 1;
     }
 
-    int max_penjualan = sales[index_bulan][0];
-    int index_bulan = 0;
+    int max_penjualan = sales[0][index_bulan];
+    int index_kota = 0;
 
-    for (int j = 0; j < 3; j++)
+    for (int i = 1; i < 3; i++)
     {
-        if (sales[index_bulan][j] > max_penjualan)
+        if (sales[i][index_bulan] > max_penjualan)
         {
-            max_penjualan = sales[index_bulan][j];
-            index_bulan = j;
+            max_penjualan = sales[i][index_bulan];
+            index_kota = i;
         }
     }
 
-    printf("Saat: %s penjualan tertinggi pada kota: %s (25)\n", kota[index_bulan], bulan[index_bulan], max_penjualan);
+    printf("Saat: %s penjualan tertinggi pada kota: %s (%d)", input_bulan, kota[index_kota], max_penjualan);
     return 0;
 }

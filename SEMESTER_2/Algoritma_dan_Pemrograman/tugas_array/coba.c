@@ -1,57 +1,48 @@
 #include <stdio.h>
-
-int maxTabel(float T[], int N)
-{
-    int max = 0, i, IX;
-    for (i = 0; i < N; i++)
-    {
-        if (T[i] >= max)
-        {
-            max = T[i];
-            IX = i;
-        }
-    }
-
-    return IX;
-}
+#include <string.h>
 
 int main()
 {
-    int i, j, sum, b, k, iMax;
+    int i, j, sum, b, k, min, iMin, jMin;
     int data_penjualan[3][4] = {{10, 15, 10, 5}, {20, 25, 20, 15}, {10, 5, 14, 3}};
+    char dataBulan[4][10] = {"Januari", "Februari", "Maret", "April"};
+    char dataKota[3][20] = {"Semarang", "Jakarta", "Yogyakarta"};
+    char *kota, *bulan;
 
     b = 3;
     k = 4;
-    float kotaRataRataTerbesar[b];
 
+    min = data_penjualan[0][0];
     for (i = 0; i < b; i++)
     {
-        sum = 0;
         for (j = 0; j < k; j++)
         {
-            sum += data_penjualan[i][j];
+            if (data_penjualan[i][j] <= min)
+            {
+                min = data_penjualan[i][j];
+                iMin = i;
+                jMin = j;
+            }
         }
-        kotaRataRataTerbesar[i] = (float)sum / k;
     }
 
     for (i = 0; i < b; i++)
     {
-        printf("%f\n", kotaRataRataTerbesar[i]);
+        if (i == iMin)
+        {
+            kota = dataKota[i];
+        }
     }
 
-    iMax = maxTabel(kotaRataRataTerbesar, b);
-    if (iMax == 0)
+    for (j = 0; j < k; j++)
     {
-        printf("Kota Semarang memiliki rata-rata penjualan tertinggi.");
+        if (j == jMin)
+        {
+            bulan = dataBulan[j];
+        }
     }
-    else if (iMax == 1)
-    {
-        printf("Kota Jakarta memiliki rata-rata penjualan tertinggi.");
-    }
-    else if (iMax == 2)
-    {
-        printf("Kota Yogyakarta memiliki rata-rata penjualan tertinggi.");
-    }
+
+    printf("%s, %s, %d\n", kota, bulan, min);
 
     return 0;
 }

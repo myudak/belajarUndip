@@ -18,20 +18,20 @@ Tabel Penjualan:
 | Yogyakarta  | 10  | 5   | 14  | 3   |
 
 Contoh Input: "Jakarta"
-Contoh Output: Kota: Jakarta dengan penjualan tertinggi saat: Feb (25)
+Contoh Output: Kota: Jakarta dengan penjualan tertinggi saat: Februari (25)
 */
 
 int main()
 {
     char input_kota[20];
     char kota[3][20] = {"Semarang", "Jakarta", "Yogyakarta"};
-    char bulan[4][10] = {"Jan", "Feb", "Mar", "Apr"};
+    char bulan[4][10] = {"Januari", "Februari", "Maret", "April"};
     int sales[3][4] = {
         {10, 15, 10, 5},
         {20, 25, 20, 15},
         {10, 5, 14, 3}};
 
-    printf("Masukkan nama kota: ");
+    printf("Masukkan nama kota (Jakarta/Semarang/Yogyakarta): ");
     scanf("%s", input_kota);
 
     int index_kota = -1;
