@@ -20,8 +20,8 @@ Output: Yogyakarta, April, 3
 
 int main()
 {
-    char *kota[3] = {"Semarang", "Jakarta", "Yogyakarta"};
-    char *bulan[4] = {"Januari", "Februari", "Maret", "April"};
+    char kota[3][20] = {"Semarang", "Jakarta", "Yogyakarta"};
+    char bulan[4][10] = {"Januari", "Februari", "Maret", "April"};
     int sales[3][4] = {
         {10, 15, 10, 5},
         {20, 25, 20, 15},
@@ -44,6 +44,6 @@ int main()
         }
     }
 
-    printf("%s, %s, %d\n", kota[min_kota], bulan[min_bulan], min_sales);
+    printf("%s, %s, %d", kota[min_kota], bulan[min_bulan], min_sales);
     return 0;
 }

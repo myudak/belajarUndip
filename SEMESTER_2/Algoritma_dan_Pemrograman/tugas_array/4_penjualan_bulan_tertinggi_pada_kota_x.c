@@ -36,17 +36,14 @@ int main()
 
     int index_kota = -1;
 
-    for (int i = 0; i < 3; i++)
-    {
-        if (strcmp(input_kota, kota[i]) == 0)
-        {
+    for (int i = 0; i < 3; i++) {
+        if (strcmp(input_kota, kota[i]) == 0) {
             index_kota = i;
             break;
         }
     }
 
-    if (index_kota == -1)
-    {
+    if (index_kota == -1) {
         printf("Kota gak ada");
         return 1;
     }
@@ -54,15 +51,13 @@ int main()
     int max_penjualan = sales[index_kota][0];
     int index_bulan = 0;
 
-    for (int j = 1; j < 4; j++)
-    {
-        if (sales[index_kota][j] > max_penjualan)
-        {
+    for (int j = 1; j < 4; j++) {
+        if (sales[index_kota][j] > max_penjualan) {
             max_penjualan = sales[index_kota][j];
             index_bulan = j;
         }
     }
 
-    printf("Kota: %s dengan penjualan tertinggi saat: %s (%d)\n", kota[index_kota], bulan[index_bulan], max_penjualan);
+    printf("Kota: %s dengan penjualan tertinggi saat: %s (%d)", kota[index_kota], bulan[index_bulan], max_penjualan);
     return 0;
 }

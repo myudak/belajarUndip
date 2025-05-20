@@ -17,7 +17,7 @@ Tabel Penjualan:
 
 Expected Output:
 ---------------
-Bulan dengan rata-rata penjualan tertinggi: Feb (15.00)
+Bulan dengan rata-rata penjualan tertinggi: Februari (15.00)
 */
 
 int main()
