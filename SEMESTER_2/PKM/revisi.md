@@ -11,3 +11,27 @@
 -  [tanya] Latar belakang TEMA "BOLD"
 - [x] luaran
 - [ ] salah tahun lampiran
+
+---
+
+- wording survey atar belakang
+
+- wording problem applikasi 
+
+- kebiasaan user
+
+-segment pasar on latar belakang
+
+- BMC busniess model canvas
+
+- payback period
+
+- legalitas produk berupa narasi
+
+- NIM
+
+- Manajemen Bisnis
+
+- GAMBAR 
+
+- Better data, more data to backup {ukuran pasar},kekurangan air latar belakang
