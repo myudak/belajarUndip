@@ -1,13 +1,18 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "tabel.h": "c",
+        "boolean.h": "c"
     },
     // "python.analysis.typeCheckingMode": "basic",
     "python.analysis.autoImportCompletions": true,
     
         "python.analysis.typeCheckingMode": "off",
-        "mypy-type-checker.ignorePatterns": ["**/*.py"]
+        "mypy-type-checker.ignorePatterns": [
+            "**/*.py"
+        ],
+        "C_Cpp.errorSquiggles": "disabled"
     
       
 }
