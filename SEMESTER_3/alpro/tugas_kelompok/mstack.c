@@ -10,21 +10,11 @@
 int main()
 {
     // kamus
+    Tstack S;
+    char e;
 
     // algoritma
-    printf(isValidKurung("({[]})") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung("({[})") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung("((()))") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung("((())") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung("())") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung(")(") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung("abc(def){ghi[jkl]}") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung("abc(def{ghi[jkl]}") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung("abc(def)ghi]jkl[") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung("abc(def)ghi[jkl") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung("abc)def(ghi[jkl]") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung("abc(def)ghi[jkl]") ? "Valid\n" : "Tidak Valid\n");
-    printf(isValidKurung("") ? "Valid\n" : "Tidak Valid\n");
-
+    createStack(&S);
+    printStack(S);
     return 0;
 }

@@ -8,8 +8,8 @@
 int main()
 {
 	// kamus
-	Tabel T, U, INV;
-	int pos;
+	Tabel T, U, INV, P;
+	int pos, N;
 
 	// algoritma
 	printf("== kondisi awal ==\n");
@@ -92,6 +92,15 @@ int main()
 
 	printf("\n== printTable (10 slot tetap) ==\n");
 	printTable(T);
+
+	printf("\n== populateTable demo ==\n");
+	createTable(&P);
+	printf("Masukkan N (1..10): ");
+	scanf("%d", &N);
+	printf("Masukkan %d karakter (pisahkan dengan spasi/newline): ", N);
+	populateTable(&P, N);
+	printf("P = ");
+	viewTable(P);
 
 	return 0;
 }
