@@ -50,11 +50,11 @@ boolean isFullStack(Tstack S);
     {Proses: mengisi elemen e ke puncak S, bila belum penuh} */
 void push(Tstack *S, char e);
 
-/* procedure push(input/output S:Tstack, output e:character)
+/* procedure push(input/output S:Tstack, output e:character (by reference))
     {I.S.: S terdefinisi, mungkin kosong}
     {F.S.: S tetap, atau e berisi infoTop(S) lama}
     {Proses: menghapus elemen e dari puncak S, bila belum kosong} */
-void pop(Tstack *S, char e);
+void pop(Tstack *S, char *e);
 
 /* procedure printStack(input S:Tstack)
     {I.S.: S terdefinisi}
@@ -70,6 +70,9 @@ void viewStack(Tstack S);
 
 /* OPERASI LAINNYA */
 boolean isValidKurung(char *str);
-// masukkan deskripsi dan spesifikasi fungsi pada soal di sini
+/* function evaluatePostfix(input expr: string, output result: real (by reference)) -> boolean
+    {mengembalikan True jika ekspresi postfix valid dan result terisi nilai evaluasinya} */
+boolean evaluatePostfix(const char *expr, double *result);
+
 
 #endif
